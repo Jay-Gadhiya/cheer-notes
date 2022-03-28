@@ -8,12 +8,16 @@
 
 }
 
+.notes-content {
+    display: flex;
+    flex-direction: column;
+}
+
 .notes-card {
     width: 100%;
     min-height: 8rem;
     max-height: max-content;
     max-width: 17rem;
-    /* border: 1px solid #9e9b9b; */
     box-shadow: rgba(70, 69, 69, 0.35) 0px 5px 15px;
     border-radius: 9px;
     padding: 1rem;
@@ -41,4 +45,16 @@
 
 .trash-icon {
     font-size: 1rem;
+}
+
+.title-and-date-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-date {
+    color: #8d8b8b;
+    font-size: .9rem;
+    padding-bottom: 10px;
 }

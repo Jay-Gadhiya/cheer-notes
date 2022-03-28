@@ -10,7 +10,10 @@ const NotesCard = () => {
     return (
         <div className="notes-card">
             <div className="notes-content">
-                <h3 className="card-title">Title</h3>
+                <div className="title-and-date-box">
+                    <h3 className="card-title">Title</h3>
+                    <p className="note-date">28/03/2022</p>
+                </div>
                 <p className="card-content">Hy this is the first note.</p>
             </div>
             <div className="cards-tools-container">
