@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    color: var(--default-black);
+}
+
+.main-container {
+    display: flex;
+
+}
+
+/* header part */
+
+.notes-header {
+    font-size: 1.7rem;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 5rem;
+}
+
+
+.hero-title {
+    margin-top: 4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Mochiy Pop One', sans-serif;
+    background: -webkit-linear-gradient(#5ebcfa, #3170f8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 300;
+}
+
+.mr-top {
+    margin-top: 5rem;
+}
+
+.hero-subtitle {
+    font-size: 2rem;
+}
+
+.sub-second {
+    color: var(--primary-color);
+}
+
+.description {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    text-align: justify;
+    word-wrap: break-word;
+    line-height: 2rem;
+}
+
+.call-to-action-btn {
+    text-transform: unset;
+    font-size: 1.1rem;
+    padding: .8rem .9rem;
+    margin-top: 2rem;
+}
+
+/* image part */
+
+.notes-img {
+    width: 80%;
+}
+
+
+@media only screen and (max-width : 910px) {
+
+    .notes-header {
+        font-size: 1.7rem;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 5rem;
+    }
+
+    .main-container {
+        flex-wrap: wrap-reverse;
+    }
+}
+
+@media only screen and (max-width : 500px) {
+
+    .notes-img {
+        width: 100%;
+    }
+
+    .notes-img img{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        text-align: center;
+    }
+
+    .mr-top {
+        margin-top: 2.4rem;
+    }
+
+    .notes-header {
+        font-size: 1.3rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .hero-subtitle {
+        font-size: 2rem;    
+    }
+    
+    .sub-second {
+        color: var(--primary-color);
+    }
+    
+    .description {
+        font-size: 1.5rem;
+        margin: 1.5rem 1rem;
+        text-align: justify;
+        word-wrap: break-word;
+        line-height: 2rem;
+    }
+    
+    .call-to-action-btn {
+        text-transform: unset;
+        font-size: 1.1rem;
+        padding: .8rem .9rem;
+        margin-top: 2rem;
+    }
+
+}
