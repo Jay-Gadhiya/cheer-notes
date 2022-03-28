@@ -1,0 +1,35 @@
+/* aside */
+.notes-aside-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.aside-items {
+    display: flex;
+    align-items: center;
+    padding: .8rem 5rem .8rem 0;
+    border-top-right-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    cursor: pointer;
+}
+
+.item-active {
+    background-color: #eaeff7;
+}
+
+.aside-icon {
+    font-size: 1.6rem;
+    margin-left: 2rem;
+    font-weight: 900;
+}
+
+.aside-title {
+    font-size: 1.3rem;
+    margin-left: 2.5rem;
+    font-weight: 600;
+}
+
+.aside-items:hover {
+    background-color: #eaeff7;
+}
