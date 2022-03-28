@@ -1,0 +1,56 @@
+
+/* Navbar */
+
+.notes-navbar {
+    display: flex; 
+    align-items: center;
+    height: 4rem;
+    box-shadow: inset 0 -1px 0 0 #dadce0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 2px 0px;
+    background-color: #0cbaba;
+    background-image: linear-gradient(315deg, #0c89ba 0%, #03396b 74%);
+}
+
+.heading-name {
+    font-size: 1.7rem;
+    margin-left: 2rem;
+    font-weight: 500;
+    font-family: 'Mochiy Pop One', sans-serif;
+    background: -webkit-linear-gradient(#e2e9ee, #ffa500);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 300;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-left: 10rem;
+    width: 50%;
+    margin: auto;
+    max-width: 35rem;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+}
+
+.search-icon {
+    background-color: #fff;
+    padding: .75rem;
+    margin: 0;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    color: #8a8484;
+    background-color: #f1f3f4;
+}
+
+.notes-search-bar {
+    padding: .7rem;
+    border: none;
+    outline: none;
+    width: 100%;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    font-size: 1rem;
+    background-color: #f1f3f4;
+}

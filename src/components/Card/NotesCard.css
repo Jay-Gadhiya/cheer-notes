@@ -1,0 +1,60 @@
+/* Notes cards */
+
+.notes-cards-container {
+    display: flex;
+    margin-top: 2.5rem;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+
+}
+
+.notes-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.notes-card {
+    width: 100%;
+    min-height: 8rem;
+    max-height: max-content;
+    max-width: 17rem;
+    box-shadow: rgba(70, 69, 69, 0.35) 0px 5px 15px;
+    border-radius: 9px;
+    padding: 1rem;
+    padding-bottom: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+.card-title {
+    margin-bottom: .5rem;
+}
+
+.cards-tools-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    
+}
+
+.card-tool {
+    font-size: 1.2rem;
+}
+
+.trash-icon {
+    font-size: 1rem;
+}
+
+.title-and-date-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-date {
+    color: #8d8b8b;
+    font-size: .9rem;
+    padding-bottom: 10px;
+}

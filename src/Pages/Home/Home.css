@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--default-black);
+}
+
+
+/* Main */
+
+.notes-main-container {
+    display: flex;
+}
+
+/* users main */
+
+.notes-users-main-container {
+    width: 100%;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.users-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 50%;
+    margin: auto;
+    height: max-content;
+    padding: 10px 10px;
+    padding-top: 1rem;
+    padding-left: 1.2rem;
+    margin-top: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 7px;
+}
+
+.users-title-input {
+    width: 100%;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+}
+
+.user-notes-input {
+    outline: none;
+    font-size: 1rem;
+    margin-top: 1.6rem;
+    border: none;
+    max-width: 100%;
+    height: max-content;
+    word-wrap: break-word;
+    resize: none;
+}
+
+/* tools */
+.tools-container {
+    display: flex;
+    align-items: center;
+}
+
+.tools {
+    font-size: 1.3rem;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.mr-left {
+    margin-left: 1.6rem;
+}
+
+.add-note-btn {
+    background-color: transparent;
+    padding: .4rem 1rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    margin-left: auto;
+    margin-right: 1rem;
+    transition: .3s ease-in-out;
+}
+
+.add-note-btn:hover {
+    background-color: #eee;
+}
