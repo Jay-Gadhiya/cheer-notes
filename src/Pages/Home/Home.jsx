@@ -9,6 +9,7 @@ import axios from "axios";
 import { useNote } from "../../Contexts/notesActions-context";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/authentication-context";
+import { addNote } from "../../Utilities-Functions/addNote";
 
 
 const HomePage = () => {
@@ -19,18 +20,6 @@ const HomePage = () => {
 
     const userInputsHandler = (e) => {
         setUserNote(pre => ({...pre, [e.target.name] : e.target.value, date : new Date(Date.now()).toLocaleString().split(',')[0]}))
-    }
-
-    const addNote = async (note) => {
-        try {
-            const res = await axios.post("/api/notes", { note }, { headers : { authorization: authState.token } }); 
-            setUserNote(pre => ({ ...pre, title : "", content : "" }));
-            noteDispatch({type : "ADD_NOTE", payload : res.data.notes });
-            console.log(res);
-            
-        } catch (error) {
-            console.log(err);
-        }
     }
      
     return (
@@ -66,7 +55,7 @@ const HomePage = () => {
                                 <MdOutlineLabel className="mr-left cursor"/>
                                 <RiInboxArchiveLine className="mr-left cursor" />
                             </div>
-                            <button onClick={() => addNote(userNote)} className="add-note-btn">Add</button>
+                            <button onClick={() => addNote(userNote, authState, noteDispatch, setUserNote)} className="add-note-btn">Add</button>
                         </div>
                     </div>
 
