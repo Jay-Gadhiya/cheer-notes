@@ -1,11 +1,10 @@
-/* Notes cards */
 
 .notes-cards-container {
     display: flex;
     margin-top: 2.5rem;
     gap: 1.2rem;
     flex-wrap: wrap;
-
+    justify-content: center;
 }
 
 .notes-content {

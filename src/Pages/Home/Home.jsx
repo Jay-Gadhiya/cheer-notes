@@ -37,11 +37,10 @@ const HomePage = () => {
                     <div className="notes-cards-container">
                         <NotesCard />
                         <NotesCard />
+                        <NotesCard />
                     </div>
                 </main>
             </div>
-
-            
         </>
     )
 }
