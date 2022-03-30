@@ -25,13 +25,12 @@ const HomePage = () => {
     const submitHandler = (e) => {
         e.preventDefault();
         
-        if(userNote.flag){
-            editNote(userNote, authState, noteDispatch, setUserNote);
-        }
-        else {
-            addNote(userNote, authState, noteDispatch, setUserNote);
-        }
-
+        userNote.flag
+        ?
+            editNote(userNote, authState, noteDispatch, setUserNote)
+        :
+            addNote(userNote, authState, noteDispatch, setUserNote)
+           
     }
       
     return (
