@@ -30,13 +30,14 @@ const HomePage = () => {
                 <Aside />
 
                 <main className="notes-users-main-container">
-                    <div className="users-input-container">
+                    <form onSubmit = {(e) => addNote(e, userNote, authState, noteDispatch, setUserNote)} className="users-input-container">
                         <input 
                         className="users-title-input" 
                         placeholder="Title" type="text" 
                         name="title"
                         onChange={userInputsHandler}
                         value = {userNote.title}
+                        required
                         />
                         <textarea 
                         className="user-notes-input" 
@@ -47,6 +48,7 @@ const HomePage = () => {
                         name="content"
                         onChange={userInputsHandler}
                         value = {userNote.content}
+                        required
                         >
                         </textarea>
                         <div className="tools-container">
@@ -55,9 +57,9 @@ const HomePage = () => {
                                 <MdOutlineLabel className="mr-left cursor"/>
                                 <RiInboxArchiveLine className="mr-left cursor" />
                             </div>
-                            <button onClick={() => addNote(userNote, authState, noteDispatch, setUserNote)} className="add-note-btn">Add</button>
+                            <button className="add-note-btn">Add</button>
                         </div>
-                    </div>
+                    </form>
 
                     <div className="notes-cards-container">
                         {

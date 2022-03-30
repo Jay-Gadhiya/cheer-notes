@@ -1,7 +1,9 @@
 import axios from "axios";
 
 
-const addNote = async (note, authState, noteDispatch, setUserNote) => {
+const addNote = async (e, note, authState, noteDispatch, setUserNote) => {
+    e.preventDefault();
+
     try {
         const res = await axios.post("/api/notes", { note }, { headers : { authorization: authState.token } }); 
         
@@ -14,6 +16,7 @@ const addNote = async (note, authState, noteDispatch, setUserNote) => {
     } catch (error) {
         return error;
     }
+
 }
 
 export { addNote };
