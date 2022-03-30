@@ -1,18 +1,27 @@
 import "./Home.css";
-import { CgNotes } from 'react-icons/cg';
 import { MdOutlineLabel } from 'react-icons/md';
 import { RiInboxArchiveLine } from 'react-icons/ri';
-import { FaRegTrashAlt } from 'react-icons/fa';
 import { MdOutlineColorLens } from 'react-icons/md';
-import { FiTrash2 } from 'react-icons/fi';
-import { MdOutlineModeEdit } from 'react-icons/md';
 import { NotesCard } from "../../components/Card/NotesCard";
 import { Aside } from "../../components/Aside/Aside";
 import { Navbar } from "../../components/Navbar/Navbar";
+import axios from "axios";
+import { useNote } from "../../Contexts/notesActions-context";
+import { useState } from "react";
+import { useAuth } from "../../Contexts/authentication-context";
+import { addNote } from "../../Utilities-Functions/addNote";
 
 
 const HomePage = () => {
     
+    const { noteState, noteDispatch } = useNote();
+    const { authState } = useAuth();
+    const [userNote, setUserNote] = useState({ title : "", content : "", date : "" });
+
+    const userInputsHandler = (e) => {
+        setUserNote(pre => ({...pre, [e.target.name] : e.target.value, date : new Date(Date.now()).toLocaleString().split(',')[0]}))
+    }
+     
     return (
         <>
             <Navbar />
@@ -21,9 +30,27 @@ const HomePage = () => {
                 <Aside />
 
                 <main className="notes-users-main-container">
-                    <div className="users-input-container">
-                        <input className="users-title-input" placeholder="Title" type="text" name="Title"/>
-                        <textarea className="user-notes-input" rows="3" cols="50" placeholder="Write your note" type="text" name="Note"></textarea>
+                    <form onSubmit = {(e) => addNote(e, userNote, authState, noteDispatch, setUserNote)} className="users-input-container">
+                        <input 
+                        className="users-title-input" 
+                        placeholder="Title" type="text" 
+                        name="title"
+                        onChange={userInputsHandler}
+                        value = {userNote.title}
+                        required
+                        />
+                        <textarea 
+                        className="user-notes-input" 
+                        rows="3" 
+                        cols="50" 
+                        placeholder="Write your note" 
+                        type="text" 
+                        name="content"
+                        onChange={userInputsHandler}
+                        value = {userNote.content}
+                        required
+                        >
+                        </textarea>
                         <div className="tools-container">
                             <div className="tools">
                                 <MdOutlineColorLens className="cursor" />
@@ -32,12 +59,13 @@ const HomePage = () => {
                             </div>
                             <button className="add-note-btn">Add</button>
                         </div>
-                    </div>
+                    </form>
 
                     <div className="notes-cards-container">
-                        <NotesCard />
-                        <NotesCard />
-                        <NotesCard />
+                        {
+                            noteState.notes.map( item => <NotesCard key={item._id} note = {item} /> )
+                        }
+                        
                     </div>
                 </main>
             </div>
