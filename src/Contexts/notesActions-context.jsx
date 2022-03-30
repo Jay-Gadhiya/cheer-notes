@@ -1,6 +1,6 @@
 import { notesReducer } from "../Reducers/notesActions-reducer";
 
-const { createContext, useContext, useReducer } = require("react");
+const { createContext, useContext, useReducer, useState } = require("react");
 
 const NoteContext = createContext();
 const useNote = () => useContext(NoteContext);
@@ -8,9 +8,10 @@ const useNote = () => useContext(NoteContext);
 const NotesProvider = ({ children }) => {
 
     const [noteState, noteDispatch] = useReducer(notesReducer, { notes : [] , date : "" });
+    const [userNote, setUserNote] = useState({ title : "", content : "", date : "", flag : false, id : "" });
 
     return (
-        <NoteContext.Provider value={{ noteState, noteDispatch }} >
+        <NoteContext.Provider value={{ noteState, noteDispatch, userNote, setUserNote }} >
             { children }
         </NoteContext.Provider>
     )
