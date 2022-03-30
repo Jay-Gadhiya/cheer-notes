@@ -33,27 +33,23 @@ const Aside = () => {
                 </div>
             </Link>  
 
-            <Link to="/label">
-                <div className="aside-items">
-                    <MdOutlineLabel className="aside-icon"/>
-                    <p className="aside-title">Labels</p>
-                </div>
-            </Link>
-
+            <div className="aside-items">
+                <MdOutlineLabel className="aside-icon"/>
+                <p className="aside-title">Labels</p>
+            </div>
+        
             <Link to="/archive">
             <div className="aside-items">
                 <RiInboxArchiveLine className="aside-icon"/>
                 <p className="aside-title">Archive</p>
             </div>
             </Link>
-
-            <Link to="/trash">
+          
             <div className="aside-items">
                 <FaRegTrashAlt className="aside-icon"/>
                 <p className="aside-title">Trash</p>
             </div>
-            </Link>
-
+            
             <div className="profile">
                 <div className="image-and-title-container">
                     <CgProfile className="profile-icon" />

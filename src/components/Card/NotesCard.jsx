@@ -8,6 +8,7 @@ import axios from "axios";
 import { useAuth } from "../../Contexts/authentication-context";
 import { useNote } from "../../Contexts/notesActions-context";
 import { deleteNote } from "../../Utilities-Functions/deleteNote";
+import { archiveNotes } from "../../Utilities-Functions/archiveNote";
 
 const NotesCard = ({ note }) => {
 
@@ -17,7 +18,7 @@ const NotesCard = ({ note }) => {
     const changeInputs = async (note) => {
         setUserNote(pre => ({...pre, title : note.title, content : note.content , flag : true, id : note._id , date : new Date(Date.now()).toLocaleString().split(',')[0]}));
     }
- 
+
     return (
         <div className="notes-card">
             <div className="notes-content">
@@ -30,7 +31,7 @@ const NotesCard = ({ note }) => {
             <div className="cards-tools-container">
                 <MdOutlineColorLens className="card-tool cursor" />
                 <MdOutlineLabel className="card-tool cursor"/>
-                <RiInboxArchiveLine className="card-tool cursor" />
+                <RiInboxArchiveLine onClick={() => archiveNotes(note, authState, noteDispatch)} className="card-tool cursor" />
                 <FiTrash2 onClick={() => deleteNote(note, authState, noteDispatch)} className="card-tool cursor "/>
                 <MdOutlineModeEdit onClick={() => changeInputs(note)} className="card-tool cursor "/>
             </div>
