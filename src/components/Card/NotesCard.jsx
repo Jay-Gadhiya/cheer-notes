@@ -12,8 +12,12 @@ import { deleteNote } from "../../Utilities-Functions/deleteNote";
 const NotesCard = ({ note }) => {
 
     const { authState } = useAuth();
-    const { noteDispatch } = useNote();
+    const { noteDispatch, userNote, setUserNote } = useNote();
 
+    const changeInputs = async (note) => {
+        setUserNote(pre => ({...pre, title : note.title, content : note.content , flag : true, id : note._id , date : new Date(Date.now()).toLocaleString().split(',')[0]}));
+    }
+ 
     return (
         <div className="notes-card">
             <div className="notes-content">
@@ -21,14 +25,14 @@ const NotesCard = ({ note }) => {
                     <h3 className="card-title"> {note.title} </h3>
                     <p className="note-date"> {note.date} </p>
                 </div>
-                <p className="card-content"> {note.content} </p>
+                <p className="card-content" > {note.content} </p>
             </div>
             <div className="cards-tools-container">
                 <MdOutlineColorLens className="card-tool cursor" />
                 <MdOutlineLabel className="card-tool cursor"/>
                 <RiInboxArchiveLine className="card-tool cursor" />
                 <FiTrash2 onClick={() => deleteNote(note, authState, noteDispatch)} className="card-tool cursor "/>
-                <MdOutlineModeEdit className="card-tool cursor "/>
+                <MdOutlineModeEdit onClick={() => changeInputs(note)} className="card-tool cursor "/>
             </div>
         </div>
     )

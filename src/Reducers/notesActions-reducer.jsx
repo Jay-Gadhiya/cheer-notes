@@ -7,6 +7,9 @@ const notesReducer = (state, action) => {
         
         case "DELETE_NOTE":
             return {...state, notes : action.payload };
+
+        case "EDIT_NOTE":
+            return {...state, notes : action.payload };
     
         default:
             state;

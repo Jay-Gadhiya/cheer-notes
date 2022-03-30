@@ -10,18 +10,30 @@ import { useNote } from "../../Contexts/notesActions-context";
 import { useState } from "react";
 import { useAuth } from "../../Contexts/authentication-context";
 import { addNote } from "../../Utilities-Functions/addNote";
+import { editNote } from "../../Utilities-Functions/editNote";
 
 
 const HomePage = () => {
     
-    const { noteState, noteDispatch } = useNote();
+    const { noteState, noteDispatch, userNote, setUserNote } = useNote();
     const { authState } = useAuth();
-    const [userNote, setUserNote] = useState({ title : "", content : "", date : "" });
 
     const userInputsHandler = (e) => {
         setUserNote(pre => ({...pre, [e.target.name] : e.target.value, date : new Date(Date.now()).toLocaleString().split(',')[0]}))
     }
-     
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        
+        if(userNote.flag){
+            editNote(userNote, authState, noteDispatch, setUserNote);
+        }
+        else {
+            addNote(userNote, authState, noteDispatch, setUserNote);
+        }
+
+    }
+      
     return (
         <>
             <Navbar />
@@ -30,7 +42,7 @@ const HomePage = () => {
                 <Aside />
 
                 <main className="notes-users-main-container">
-                    <form onSubmit = {(e) => addNote(e, userNote, authState, noteDispatch, setUserNote)} className="users-input-container">
+                    <form  onSubmit = {(e) => submitHandler(e)} className="users-input-container">
                         <input 
                         className="users-title-input" 
                         placeholder="Title" type="text" 
@@ -57,7 +69,14 @@ const HomePage = () => {
                                 <MdOutlineLabel className="mr-left cursor"/>
                                 <RiInboxArchiveLine className="mr-left cursor" />
                             </div>
-                            <button className="add-note-btn">Add</button>
+                            {
+                                userNote.flag 
+                                ?
+                                <button className="add-note-btn">Update Note</button>
+                                :
+                                <button className="add-note-btn">Add Note</button>
+                            }
+                            
                         </div>
                     </form>
 

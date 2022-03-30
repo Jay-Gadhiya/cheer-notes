@@ -31,6 +31,10 @@
     margin-bottom: .5rem;
 }
 
+.card-content {
+    word-break: normal;
+}
+
 .cards-tools-container {
     display: flex;
     gap: 1rem;
