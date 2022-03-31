@@ -13,7 +13,7 @@ import { archiveNotes } from "../../Utilities-Functions/archiveNote";
 const NotesCard = ({ note }) => {
 
     const { authState } = useAuth();
-    const { noteDispatch, userNote, setUserNote } = useNote();
+    const { noteDispatch, userNote, setUserNote, deletedNotes, setDeletedNotes } = useNote();
 
     const changeInputs = async (note) => {
         setUserNote(pre => ({...pre, title : note.title, content : note.content , flag : true, id : note._id , date : new Date(Date.now()).toLocaleString().split(',')[0]}));

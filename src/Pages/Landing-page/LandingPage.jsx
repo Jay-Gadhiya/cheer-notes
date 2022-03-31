@@ -19,9 +19,9 @@ const LandingPage = () => {
                     {
                         authState.token 
                         ?
-                        <Link to="/home" ><button class="btn btn-primary call-to-action-btn">Create Note</button></Link>
+                        <Link to="/home" ><button className="btn btn-primary call-to-action-btn">Create Note</button></Link>
                         :
-                        <Link to="/signup"><button class="btn btn-primary call-to-action-btn">Join Now</button></Link>
+                        <Link to="/signup"><button className="btn btn-primary call-to-action-btn">Join Now</button></Link>
                     }
                    <Link to="/login" ><p className="acccount-ask"> Already have an account?</p></Link>
                 </header>

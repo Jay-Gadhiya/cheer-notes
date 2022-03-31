@@ -8,12 +8,14 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import { CgProfile } from 'react-icons/cg';
 import { useAuth } from "../../Contexts/authentication-context";
 import { Link } from "react-router-dom";
+import { useNote } from "../../Contexts/notesActions-context";
 
 
 const Aside = () => {
 
     const navigate = useNavigate();
     const  { authDispatch } = useAuth();
+    const { activePage, setActivePage } = useNote();
 
     // user logout click handler
     const logoutClickHandler = (e) => {
@@ -21,34 +23,35 @@ const Aside = () => {
         localStorage.removeItem("token");
         authDispatch({ type : "USER_LOGOUT"});
         navigate("/");
-
     }
 
      return (
         <aside className="notes-aside-container">
             <Link to="/home">
-                <div className="aside-items item-active ">
+                <div onClick={() => setActivePage("notes")} className={`aside-items ${activePage === "notes" ? "item-active" : ""}`}>
                     <CgNotes className="aside-icon"/>
                     <p className="aside-title">Notes</p>
                 </div>
             </Link>  
 
-            <div className="aside-items">
+            <div onClick={() => setActivePage("label")} className={`aside-items ${activePage === "label" ? "item-active" : ""}`}>
                 <MdOutlineLabel className="aside-icon"/>
                 <p className="aside-title">Labels</p>
             </div>
         
             <Link to="/archive">
-            <div className="aside-items">
+            <div onClick={() => setActivePage("archive")} className={`aside-items ${activePage === "archive" ? "item-active" : ""}`}>
                 <RiInboxArchiveLine className="aside-icon"/>
                 <p className="aside-title">Archive</p>
             </div>
             </Link>
           
-            <div className="aside-items">
+            <Link to="/trash">
+            <div onClick={() => setActivePage("trash")} className={`aside-items ${activePage === "trash" ? "item-active" : ""}`}>
                 <FaRegTrashAlt className="aside-icon"/>
                 <p className="aside-title">Trash</p>
             </div>
+            </Link>
             
             <div className="profile">
                 <div className="image-and-title-container">

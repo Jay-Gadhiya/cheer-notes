@@ -6,6 +6,7 @@ import { HomePage } from "./Pages/Home/Home";
 import { Login } from "./Pages/Authentication/Login";
 import { Signup } from "./Pages/Authentication/Signup";
 import { Archive } from "./Pages/Archive-Page/Archive";
+import { TrashPage } from "./Pages/Trash-Page/trash";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/archive" element={<Archive />} />
+          <Route path="/trash" element={<TrashPage />} />
         </Routes>
     </div>
   );
