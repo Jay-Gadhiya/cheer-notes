@@ -94,3 +94,19 @@ body {
 .add-note-btn:hover {
     background-color: #eee;
 }
+
+/* Archives css */
+
+.archives-heading {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.line-breack {
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    max-width: 15rem;
+    margin-top: .6rem;
+    border:1px solid #dbd7d7;
+}

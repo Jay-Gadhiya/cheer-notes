@@ -26,22 +26,30 @@ const Aside = () => {
 
      return (
         <aside className="notes-aside-container">
-            <div className="aside-items item-active ">
-                <CgNotes className="aside-icon"/>
-                <p className="aside-title">Notes</p>
-            </div>
+            <Link to="/home">
+                <div className="aside-items item-active ">
+                    <CgNotes className="aside-icon"/>
+                    <p className="aside-title">Notes</p>
+                </div>
+            </Link>  
+
             <div className="aside-items">
                 <MdOutlineLabel className="aside-icon"/>
                 <p className="aside-title">Labels</p>
             </div>
+        
+            <Link to="/archive">
             <div className="aside-items">
                 <RiInboxArchiveLine className="aside-icon"/>
                 <p className="aside-title">Archive</p>
             </div>
+            </Link>
+          
             <div className="aside-items">
                 <FaRegTrashAlt className="aside-icon"/>
                 <p className="aside-title">Trash</p>
             </div>
+            
             <div className="profile">
                 <div className="image-and-title-container">
                     <CgProfile className="profile-icon" />

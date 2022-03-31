@@ -80,6 +80,7 @@ const HomePage = () => {
                     </form>
 
                     <div className="notes-cards-container">
+                        
                         {
                             noteState.notes.map( item => <NotesCard key={item._id} note = {item} /> )
                         }
