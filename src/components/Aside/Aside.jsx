@@ -19,7 +19,6 @@ const Aside = () => {
 
     // user logout click handler
     const logoutClickHandler = (e) => {
-        console.log("clicked");
         localStorage.removeItem("token");
         authDispatch({ type : "USER_LOGOUT"});
         navigate("/");
