@@ -19,6 +19,16 @@ const notesReducer = (state, action) => {
 
         case "DELETE_ARCHIVE_NOTE":
             return {...state, archives : action.payload };
+
+        case "TRASH_NOTE":
+            return {...state, trashNotes : [...state.trashNotes, action.payload] };
+
+        case "RESTORE_FROM_TRASH":
+            return {...state, trashNotes : state.trashNotes.filter( item => item._id !== action.payload._id) };
+
+        case "DELETE_FROM_TRASH":
+            return {...state, trashNotes : state.trashNotes.filter( item => item._id !== action.payload._id) };
+        
     
         default:
             state;

@@ -6,6 +6,7 @@ const deleteFromArchive = async (item, authState, noteDispatch) => {
        
         if(res.status === 200){
             noteDispatch({type : "DELETE_ARCHIVE_NOTE", payload : res.data.archives });
+            noteDispatch({type : "TRASH_NOTE", payload : item});
         }
         
     } catch (error) {
