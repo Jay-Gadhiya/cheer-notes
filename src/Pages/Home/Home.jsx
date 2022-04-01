@@ -10,14 +10,12 @@ import { useNote } from "../../Contexts/notesActions-context";
 import { useAuth } from "../../Contexts/authentication-context";
 import { addNote } from "../../Utilities-Functions/addNote";
 import { editNote } from "../../Utilities-Functions/editNote";
-import { useState } from "react";
 
 const HomePage = () => {
     
     const { noteState, noteDispatch, userNote, setUserNote } = useNote();
     const { authState } = useAuth();
     const [colorPalate, setColorPalate] = useState(false);
-    const [color, setColor] = useState("");
 
     const userInputsHandler = (e) => {
         setUserNote(pre => ({...pre, [e.target.name] : e.target.value, date : new Date(Date.now()).toLocaleString().split(',')[0]}))
