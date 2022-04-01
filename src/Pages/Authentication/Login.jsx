@@ -40,8 +40,7 @@ const Login = () => {
             navigate("/home");
 
         } catch (error) {
-            // alert("please enter valid user name or password");
-            console.log(error);
+            return error;
         }
 
     }
