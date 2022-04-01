@@ -41,8 +41,6 @@ export const HomePage = () => {
         setColorPalate(pre => !pre);
     }
 
-    
-      
     return (
         <>
             <Navbar />
