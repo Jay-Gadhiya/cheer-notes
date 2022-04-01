@@ -12,7 +12,7 @@ import { addNote } from "../../Utilities-Functions/addNote";
 import { editNote } from "../../Utilities-Functions/editNote";
 import { useState } from "react";
 
-const HomePage = () => {
+export const HomePage = () => {
     
     const { noteState, noteDispatch, userNote, setUserNote } = useNote();
     const { authState } = useAuth();
@@ -122,4 +122,4 @@ const HomePage = () => {
     )
 }
 
-export { HomePage };
+// export { HomePage };
