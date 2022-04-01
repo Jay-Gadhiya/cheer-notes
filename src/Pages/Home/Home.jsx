@@ -10,8 +10,7 @@ import { useNote } from "../../Contexts/notesActions-context";
 import { useAuth } from "../../Contexts/authentication-context";
 import { addNote } from "../../Utilities-Functions/addNote";
 import { editNote } from "../../Utilities-Functions/editNote";
-import { useState } from "react/cjs/react.development";
-
+import { useState } from "react";
 
 const HomePage = () => {
     
