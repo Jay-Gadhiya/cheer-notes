@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import "../../components/Colors/colors.css";
 
 * {
     padding: 0;
@@ -20,6 +21,22 @@ body {
 }
 
 /* users main */
+
+.outer-form-container {
+    position: relative;
+}
+
+.btn-forms-colors-container {
+    position: absolute;
+    bottom: -29px;
+    left: 15rem;
+    display: flex;
+    border-radius: 7px;
+    background-color: #fff;
+    padding: .2rem;
+    gap: 4px;
+    box-shadow: #46454559 0px 5px 15px;
+}
 
 .notes-users-main-container {
     width: 100%;
@@ -49,6 +66,7 @@ body {
     font-size: 1.2rem;
     outline: none;
     border: none;
+    background-color: transparent;
 }
 
 .user-notes-input {
@@ -60,6 +78,7 @@ body {
     height: max-content;
     word-wrap: break-word;
     resize: none;
+    background-color: transparent;
 }
 
 /* tools */
@@ -70,6 +89,8 @@ body {
 
 .tools {
     font-size: 1.3rem;
+    display: flex;
+    align-items: center;
 }
 
 .cursor {
@@ -94,6 +115,7 @@ body {
 .add-note-btn:hover {
     background-color: #eee;
 }
+
 
 /* Archives css */
 

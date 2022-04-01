@@ -8,11 +8,20 @@ const useNote = () => useContext(NoteContext);
 const NotesProvider = ({ children }) => {
 
     const [noteState, noteDispatch] = useReducer(notesReducer, { notes : [] , archives : [], trashNotes : [] ,date : "" });
-    const [userNote, setUserNote] = useState({ title : "", content : "", date : "", flag : false, id : "" });
+    const [userNote, setUserNote] = useState(
+        { title : "", 
+        content : "", 
+        date : "", 
+        flag : false, 
+        id : "",
+        color : ""
+    });
     const [activePage, setActivePage] = useState("notes");
+    const [color, setColor] = useState("");
+    console.log(userNote);
 
     return (
-        <NoteContext.Provider value={{ noteState, noteDispatch, userNote, setUserNote, activePage, setActivePage }} >
+        <NoteContext.Provider value={{ noteState, noteDispatch, userNote, setUserNote, activePage, setActivePage, color, setColor }} >
             { children }
         </NoteContext.Provider>
     )

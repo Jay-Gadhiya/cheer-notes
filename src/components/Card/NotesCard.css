@@ -1,3 +1,4 @@
+@import "../Colors/colors.css";
 
 .notes-cards-container {
     display: flex;
@@ -18,14 +19,13 @@
     min-height: 8rem;
     max-height: max-content;
     max-width: 17rem;
-    box-shadow: rgba(70, 69, 69, 0.35) 0px 5px 15px;
+    box-shadow: #46454559 0px 5px 15px;
     border-radius: 9px;
     padding: 1rem;
     padding-bottom: 7px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    
+    justify-content: space-between;    
 }
 
 .card-title {
@@ -62,3 +62,33 @@
     font-size: .9rem;
     padding-bottom: 10px;
 }
+
+/* color container */
+
+.color-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-colors-container {
+    position: absolute;
+    top: 30px;
+    left: -3.5rem;
+    display: flex;
+    border-radius: 7px;
+    background-color: #fff;
+    padding: .2rem;
+    gap: 4px;
+    box-shadow: #46454559 0px 5px 15px;
+
+}
+
+.btn-color {
+    border: none;
+    border-radius: 100%;
+    width: 2rem;
+    height: 2rem;
+}
+

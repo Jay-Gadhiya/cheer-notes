@@ -28,6 +28,9 @@ const notesReducer = (state, action) => {
 
         case "DELETE_FROM_TRASH":
             return {...state, trashNotes : state.trashNotes.filter( item => item._id !== action.payload._id) };
+
+        case "ADD_COLOR_ON_CARD":
+            return {...state, notes : action.payload };
         
     
         default:

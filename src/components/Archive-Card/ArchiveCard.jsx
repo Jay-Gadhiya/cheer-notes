@@ -18,7 +18,7 @@ const ArchiveCard = ({ archive }) => {
 
     return (
         <>
-            <div className="notes-card">
+            <div className={`notes-card ${archive.color}`}>
                 <div className="notes-content">
                     <div className="title-and-date-box">
                         <h3 className="card-title"> {archive.title} </h3>
