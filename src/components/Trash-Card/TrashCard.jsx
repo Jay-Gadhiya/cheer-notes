@@ -22,7 +22,7 @@ const TrashCard = ({note}) => {
     }
 
     return (
-        <div className="notes-card">
+        <div className={`notes-card ${note.color}`}>
             <div className="notes-content">
                 <div className="title-and-date-box">
                     <h3 className="card-title"> {note.title} </h3>

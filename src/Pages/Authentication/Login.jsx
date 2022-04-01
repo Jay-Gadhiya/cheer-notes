@@ -32,16 +32,13 @@ const Login = () => {
     const loginClickHandler = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/api/auth/login", userData);
-            console.log(response);
-            
+            const response = await axios.post("/api/auth/login", userData);            
             localStorage.setItem("token", response.data.encodedToken);
             authDispatch({ type : "USER_LOGIN", payload : response.data.encodedToken })
             navigate("/home");
 
         } catch (error) {
-            // alert("please enter valid user name or password");
-            console.log(error);
+            return error;
         }
 
     }

@@ -1,12 +1,11 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Navbar } from "./components/Navbar/Navbar";
 import { LandingPage } from "./Pages/Landing-page/LandingPage";
-import { HomePage } from "./Pages/Home/Home";
 import { Login } from "./Pages/Authentication/Login";
 import { Signup } from "./Pages/Authentication/Signup";
 import { Archive } from "./Pages/Archive-Page/Archive";
 import { TrashPage } from "./Pages/Trash-Page/trash";
+import { HomePage } from "./Pages/Home/Home";
 
 function App() {
   return (

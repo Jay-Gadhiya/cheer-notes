@@ -34,7 +34,7 @@ const Signup = () => {
           authDispatch({ type : "USER_SIGNUP", payload : response.data.encodedToken });
 
         } catch (error) {
-            console.log(error);
+            return error;
         }
     };
     
