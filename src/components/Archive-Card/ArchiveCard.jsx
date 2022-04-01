@@ -1,7 +1,5 @@
 import "../Card/NotesCard.css";
 import "./ArchiveCard.css";
-import { MdOutlineLabel } from 'react-icons/md';
-import { MdOutlineColorLens } from 'react-icons/md';
 import { FiTrash2 } from 'react-icons/fi';
 import { BiArchiveOut } from 'react-icons/bi';
 import axios from "axios";
@@ -27,8 +25,6 @@ const ArchiveCard = ({ archive }) => {
                     <p className="card-content" > {archive.content} </p>
                 </div>
                 <div className="cards-tools-container">
-                    <MdOutlineColorLens className="card-tool cursor" />
-                    <MdOutlineLabel className="card-tool cursor"/>
                     <BiArchiveOut onClick={() => restoreFromArchive(archive, authState, noteDispatch)} className="card-tool cursor" />
                     <FiTrash2 onClick={() => deleteFromArchive(archive, authState, noteDispatch)} className="card-tool cursor "/>
                 </div>
