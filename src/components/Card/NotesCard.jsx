@@ -11,7 +11,7 @@ import { useNote } from "../../Contexts/notesActions-context";
 import { deleteNote } from "../../Utilities-Functions/deleteNote";
 import { archiveNotes } from "../../Utilities-Functions/archiveNote";
 import { editNote } from "../../Utilities-Functions/editNote";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 const NotesCard = ({ note }) => {
 
