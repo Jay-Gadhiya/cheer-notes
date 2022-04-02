@@ -28,7 +28,7 @@ const TrashCard = ({note}) => {
                     <h3 className="card-title"> {note.title} </h3>
                     <p className="note-date"> {note.date} </p>
                 </div>
-                <p className="card-content" > {note.content} </p>
+                <div className="card-content" dangerouslySetInnerHTML={{ __html: note.content}} /> 
             </div>
             <div className="cards-tools-container">
                 <FaTrash onClick={() => deleteFromTrash(note)} className="card-tool cursor"/>

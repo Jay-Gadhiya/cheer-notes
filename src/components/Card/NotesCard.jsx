@@ -19,7 +19,10 @@ const NotesCard = ({ note }) => {
     const { noteDispatch, setUserNote, color, setColor } = useNote();
     const [colorPalate, setColorPalate] = useState(false);
 
-    const changeInputs = async (note) => {
+    
+    
+    const changeInputs = (note) => {
+        console.log("note", note);
         setUserNote(pre => ({...pre, title : note.title, content : note.content , flag : true, _id : note._id , color : note.color, date : new Date(Date.now()).toLocaleString().split(',')[0]}));
     }
 
@@ -34,12 +37,12 @@ const NotesCard = ({ note }) => {
 
     return (
         <div className={`notes-card ${note.color}`}>
-            <div className="notes-content">
+            <div className="notes-content" >
                 <div className="title-and-date-box">
                     <h3 className="card-title"> {note.title} </h3>
                     <p className="note-date"> {note.date} </p>
                 </div>
-                <p className="card-content" > {note.content} </p>
+                <div className="card-content" dangerouslySetInnerHTML={{ __html: note.content}} />
             </div>
             <div className="cards-tools-container">
                 <div className="color-container">

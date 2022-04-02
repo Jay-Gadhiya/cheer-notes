@@ -43,6 +43,7 @@ body {
     padding-left: 1rem;
     height: calc(100vh - 4rem);
     overflow-y: scroll;
+    padding-bottom: 6rem;
 }
 
 .users-input-container {
@@ -60,12 +61,43 @@ body {
     border-radius: 7px;
 }
 
+.quill-container {
+    width: 100%;
+    max-width: 40rem;
+    margin: auto;
+}
+
+.quill-editor {
+    margin-top: .5rem;
+}
+
+.label-content {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.title-box {
+    width: 100%;
+    max-width: 40rem;
+    margin: auto;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+
+}
+
+.label-title {
+    font-size: 1.3rem;
+}
+
 .users-title-input {
     width: 100%;
-    font-size: 1.2rem;
+    font-size: .9rem;
     outline: none;
     border: none;
-    background-color: transparent;
+    background-color: #f3f5f5;
+    font-size: 1.5rem;
+    padding: .5rem .7rem;
+    margin-top: .5rem;
 }
 
 .user-notes-input {
@@ -84,6 +116,8 @@ body {
 .tools-container {
     display: flex;
     align-items: center;
+    margin-top: 2.5rem;
+
 }
 
 .tools {
@@ -101,18 +135,15 @@ body {
 }
 
 .add-note-btn {
-    background-color: transparent;
-    padding: .4rem 1rem;
-    border-radius: 5px;
-    border: none;
-    font-size: 1rem;
+    width:unset;
+    padding: .5rem 1rem;
+    font-size: .9rem;
     margin-left: auto;
-    margin-right: 1rem;
-    transition: .3s ease-in-out;
+    margin-top: .5rem;
 }
 
 .add-note-btn:hover {
-    background-color: #eee;
+    background-color: var(--primary-hover);
 }
 
 

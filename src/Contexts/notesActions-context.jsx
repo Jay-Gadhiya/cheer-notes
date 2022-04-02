@@ -13,11 +13,12 @@ const NotesProvider = ({ children }) => {
         content : "", 
         date : "", 
         flag : false, 
-        id : "",
+        _id : "",
         color : ""
     });
     const [activePage, setActivePage] = useState("notes");
     const [color, setColor] = useState("");
+    console.log(userNote);
 
     return (
         <NoteContext.Provider value={{ noteState, noteDispatch, userNote, setUserNote, activePage, setActivePage, color, setColor }} >
