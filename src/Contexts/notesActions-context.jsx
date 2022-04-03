@@ -18,8 +18,6 @@ const NotesProvider = ({ children }) => {
     });
     const [activePage, setActivePage] = useState("notes");
     const [color, setColor] = useState("");
-    console.log(userNote);
-
     return (
         <NoteContext.Provider value={{ noteState, noteDispatch, userNote, setUserNote, activePage, setActivePage, color, setColor }} >
             { children }
