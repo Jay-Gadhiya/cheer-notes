@@ -27,14 +27,15 @@ body {
 
 .btn-forms-colors-container {
     position: absolute;
-    bottom: -29px;
-    left: 15rem;
+    bottom: -36px;
+    left: 14rem;
     display: flex;
-    border-radius: 7px;
+    border-radius: 8px;
     background-color: #fff;
-    padding: .2rem;
+    padding: .3rem;
     gap: 4px;
     box-shadow: #46454559 0px 5px 15px;
+    box-shadow: 0 1px 5px rgb(128 128 128);
 }
 
 .notes-users-main-container {
@@ -69,6 +70,7 @@ body {
 
 .quill-editor {
     margin-top: .5rem;
+    height: 8rem;
 }
 
 .label-content {

@@ -20,13 +20,13 @@ export const HomePage = () => {
     const { authState } = useAuth();
     const [colorPalate, setColorPalate] = useState(false);
     const editorStyle = {
-        height: 150
+        // height : 100,
+        // maxheight: 150,
     }
-    // console.log("home", userNote);
 
-    // const userColorInputHandler = (colorName) => {
-    //     setUserNote(pre => ({...pre, color : colorName}));
-    // }
+    const userColorInputHandler = (colorName) => {
+        setUserNote(pre => ({...pre, color : colorName}));
+    }
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -61,28 +61,24 @@ export const HomePage = () => {
                 <Aside />
 
                 <main className="notes-users-main-container">
-                    <form onSubmit = {(e) => submitHandler(e)} className={`quill-container ${userNote.color}`}>
+                    <form onSubmit = {(e) => submitHandler(e)} className={`quill-container`}>
 
                         <div className="title-box">
-                            {/* <label className="label-title" htmlFor="title">Title</label> */}
                             <input 
                                 name="title"
                                 type="text" 
                                 className="users-title-input" 
-                                placeholder="write title" 
+                                placeholder="title" 
                                 value={userNote.title}
-                                // onChange={e => setUserNote({...userNote, title : e.target.value})}
                                 onChange={userInputsHandler}
                             />
                         </div>
 
-                        {/* <label className="label-content" htmlFor="content">Description</label> */}
                         <ReactQuill 
-                            className="quill-editor"
+                            className={`quill-editor ${userNote.color} `}
                             value={userNote.content}
-                            // onChange={e => setUserNote({...userNote, content : e})}
                             onChange={e => quillHander(e)}
-                            style={editorStyle}  
+                            // style={editorStyle}  
                         />
 
                         <div className="tools-container">
@@ -103,7 +99,7 @@ export const HomePage = () => {
                     </form>
 
 
-                    {/* <div className="outer-form-container">
+                    <div className="outer-form-container">
                         {
                             colorPalate
                             &&
@@ -118,12 +114,9 @@ export const HomePage = () => {
                                 <button onClick={() => userColorInputHandler("pink")} className="btn-color pink"></button>
                                 <button onClick={() => userColorInputHandler("brown")} className="btn-color brown"></button>
                                 <button onClick={() => userColorInputHandler("grey")} className="btn-color grey"></button>
-                                , date : new Date(Date.now()).toLocaleString().split(',')[0]
                             </div>
-                        }
-
-                        
-                    </div>*/}
+                        }                        
+                    </div>
                    
                     <div className="notes-cards-container">
                         
