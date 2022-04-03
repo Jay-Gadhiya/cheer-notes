@@ -19,10 +19,6 @@ export const HomePage = () => {
     const { noteState, noteDispatch, userNote, setUserNote } = useNote();
     const { authState } = useAuth();
     const [colorPalate, setColorPalate] = useState(false);
-    const editorStyle = {
-        // height : 100,
-        // maxheight: 150,
-    }
 
     const userColorInputHandler = (colorName) => {
         setUserNote(pre => ({...pre, color : colorName}));
@@ -71,6 +67,7 @@ export const HomePage = () => {
                                 placeholder="title" 
                                 value={userNote.title}
                                 onChange={userInputsHandler}
+                                required
                             />
                         </div>
 
@@ -78,7 +75,6 @@ export const HomePage = () => {
                             className={`quill-editor ${userNote.color} `}
                             value={userNote.content}
                             onChange={e => quillHander(e)}
-                            // style={editorStyle}  
                         />
 
                         <div className="tools-container">
