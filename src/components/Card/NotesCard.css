@@ -21,7 +21,7 @@
     max-width: 17rem;
     box-shadow: #46454559 0px 5px 15px;
     border-radius: 9px;
-    padding: 1rem;
+    padding: 1rem 0;
     padding-bottom: 7px;
     display: flex;
     flex-direction: column;
@@ -30,10 +30,14 @@
 
 .card-title {
     margin-bottom: .5rem;
+    margin-left: 1rem;
+
 }
 
 .card-content {
     word-break: normal;
+    margin-left: 1.7rem;
+    margin-right: 8px;
 }
 
 .cards-tools-container {
@@ -41,6 +45,7 @@
     gap: 1rem;
     align-items: center;
     margin-top: 1rem;
+    margin-left: 1rem;
 }
 
 .card-tool {
@@ -55,6 +60,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-right: 8px;
 }
 
 .note-date {
@@ -79,9 +85,10 @@
     display: flex;
     border-radius: 7px;
     background-color: #fff;
-    padding: .2rem;
+    padding: .3rem;
     gap: 4px;
     box-shadow: #46454559 0px 5px 15px;
+    box-shadow: 0 1px 5px rgb(128 128 128);
 
 }
 

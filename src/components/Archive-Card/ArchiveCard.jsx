@@ -22,7 +22,7 @@ const ArchiveCard = ({ archive }) => {
                         <h3 className="card-title"> {archive.title} </h3>
                         <p className="note-date"> {archive.date} </p>
                     </div>
-                    <p className="card-content" > {archive.content} </p>
+                    <div className="card-content" dangerouslySetInnerHTML={{ __html: archive.content}} /> 
                 </div>
                 <div className="cards-tools-container">
                     <BiArchiveOut onClick={() => restoreFromArchive(archive, authState, noteDispatch)} className="card-tool cursor" />

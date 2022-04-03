@@ -11,7 +11,7 @@ const editNote = async (note, authState, noteDispatch, setUserNote) => {
         
     } catch (error) {
         return error;
-       
+    
     }
 }
 
