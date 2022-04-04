@@ -30,6 +30,13 @@ const TrashCard = ({note}) => {
                 </div>
                 <div className="card-content" dangerouslySetInnerHTML={{ __html: note.content}} /> 
             </div>
+            <div className="tag-chips">
+                {
+                    note.tags.map( item => (
+                        <span key={item} className="chip">{item}</span>
+                    ))
+                }
+            </div>
             <div className="cards-tools-container">
                 <FaTrash onClick={() => deleteFromTrash(note)} className="card-tool cursor"/>
                 <FaTrashRestoreAlt onClick={() => restorFromTrash(note)} className="card-tool cursor" />

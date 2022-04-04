@@ -40,11 +40,10 @@ body {
 
 .notes-users-main-container {
     width: 100%;
-    padding-bottom: 1rem;
     padding-left: 1rem;
     height: calc(100vh - 4rem);
     overflow-y: scroll;
-    padding-bottom: 6rem;
+    padding-bottom: 10rem;
 }
 
 .users-input-container {
@@ -70,7 +69,6 @@ body {
 
 .quill-editor {
     margin-top: .5rem;
-    height: 8rem;
 }
 
 .label-content {
@@ -118,8 +116,6 @@ body {
 .tools-container {
     display: flex;
     align-items: center;
-    margin-top: 2.5rem;
-
 }
 
 .tools {
@@ -163,4 +159,18 @@ body {
     max-width: 15rem;
     margin-top: .6rem;
     border:1px solid #dbd7d7;
+}
+
+/* tag */
+
+.tag-container-home {
+    position: relative;
+}
+
+.tag-outer-container-home {
+    position: absolute;
+    top: -0.5rem;
+    left: 15rem;
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgb(128 128 128);
 }

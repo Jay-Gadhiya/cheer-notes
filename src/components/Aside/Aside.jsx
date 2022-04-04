@@ -35,7 +35,7 @@ const Aside = () => {
 
             <div onClick={() => setActivePage("label")} className={`aside-items ${activePage === "label" ? "item-active" : ""}`}>
                 <MdOutlineLabel className="aside-icon"/>
-                <p className="aside-title">Labels</p>
+                <p className="aside-title">Tags</p>
             </div>
         
             <Link to="/archive">
