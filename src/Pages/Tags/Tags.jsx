@@ -47,11 +47,14 @@ const Tags = () => {
 
                     <div className="notes-cards-container tags-cards-area">
                     {
-                            noteState.notes.map( item =>{
-                                if(item.tags.find(tag => tag === "exercise")){
-                                  return  <TagsCard key={item} note = {item} />
-                                }
-                            }
+                            noteState.notes.map( item =>(
+                                item.tags.find(tag => tag === "exercise")
+                                ?
+                                <TagsCard key={item} note = {item} />
+                                :
+                                ""
+                                )
+                            
                             )
                         }
                     </div> 
