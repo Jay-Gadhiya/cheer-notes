@@ -12,6 +12,7 @@ import { deleteNote } from "../../Utilities-Functions/deleteNote";
 import { archiveNotes } from "../../Utilities-Functions/archiveNote";
 import { editNote } from "../../Utilities-Functions/editNote";
 import { useState } from "react";
+import { deleteChip } from "../../Utilities-Functions/deleteChip";
 
 const NotesCard = ({ note }) => {
 
@@ -60,12 +61,6 @@ const NotesCard = ({ note }) => {
         setTagBox(pre => !pre);
     }
 
-    const deleteChip = (chip) => {
-        const deletedChip = note.tags.filter( item => item !== chip);
-        const newData = {...note, tags: deletedChip};
-        editNote(newData, authState, noteDispatch, setUserNote);
-    }
-
     return (
         <div className={`notes-card ${note.color}`}>
             <div className="notes-content" >
@@ -81,7 +76,7 @@ const NotesCard = ({ note }) => {
                         
                         <div key={item} className="chip">
                             <span >{item} </span> 
-                            <span onClick={() => deleteChip(item)} className="delete-chip">&times;</span>
+                            <span onClick={() => deleteChip(item, note, authState, noteDispatch, setUserNote)} className="delete-chip">&times;</span>
                         </div>
                         
                     ))
