@@ -99,3 +99,75 @@
     height: 2rem;
 }
 
+/* tags css */
+
+.tag-outer-container {
+    position: absolute;
+    top: 1.6rem;
+    left: -3rem;
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgb(128 128 128);
+}
+
+.tag-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.tags-selection-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 12rem;
+    padding: .5rem;
+    justify-content: space-around;
+}
+
+.tag {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.btn-primary-outline {
+    border: none;
+    border-top: 1px solid #cfcdcd;
+}
+
+.user-input-tag {
+    width: 100%;
+    border: 1px solid #bebdbd;
+    padding: 3px;
+    outline: none;
+    margin-bottom: 2px;
+}
+
+/* tag chips */
+
+.tag-chips {
+    /* border: 1px solid grey; */
+    display: flex;
+    gap: .5rem;
+    width: 100%;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    margin-left: .5rem;
+}
+
+.chip {
+    background-color: rgba(0, 0, 0, 0.137);
+    border-radius: 5px;
+    padding: 3px 5px;
+    width: max-content;
+    height: max-content;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.delete-chip {
+    font-size: 1.1rem;
+    text-align: center;
+    cursor: pointer;
+}

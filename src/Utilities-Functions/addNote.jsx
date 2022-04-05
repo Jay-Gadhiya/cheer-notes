@@ -2,7 +2,6 @@ import axios from "axios";
 
 
 const addNote = async (note, authState, noteDispatch, setUserNote) => {
-    console.log("addnote",note);
 
     try {
         const res = await axios.post("/api/notes", { note }, { headers : { authorization: authState.token } }); 

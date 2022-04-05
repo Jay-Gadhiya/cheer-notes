@@ -12,18 +12,20 @@ import { deleteNote } from "../../Utilities-Functions/deleteNote";
 import { archiveNotes } from "../../Utilities-Functions/archiveNote";
 import { editNote } from "../../Utilities-Functions/editNote";
 import { useState } from "react";
+import { deleteChip } from "../../Utilities-Functions/deleteChip";
 
 const NotesCard = ({ note }) => {
 
     const { authState } = useAuth();
-    const { noteDispatch, setUserNote, color, setColor } = useNote();
+    const { noteDispatch, setUserNote, userNote, color, setColor } = useNote();
     const [colorPalate, setColorPalate] = useState(false);
+    const [tagBox, setTagBox] = useState(false);
+    let itemTags = [...note.tags];
+    let tempTag = "";
 
-    
-    
     const changeInputs = (note) => {
         console.log("note", note);
-        setUserNote(pre => ({...pre, title : note.title, content : note.content , flag : true, _id : note._id , color : note.color, date : new Date(Date.now()).toLocaleString().split(',')[0]}));
+        setUserNote(pre => ({...pre, title : note.title, content : note.content , flag : true, _id : note._id , color : note.color, tags : note.tags ,date : new Date(Date.now()).toLocaleString().split(',')[0]}));
     }
 
     const applyColorOnCard = (colorName, note) => {
@@ -35,6 +37,30 @@ const NotesCard = ({ note }) => {
         setColorPalate(pre => !pre);
     }
 
+    const addInputTagValue = (e) => {
+        tempTag = e.target.value;
+    }
+
+    const addTagsInArray = (tag) => {
+      
+      if(itemTags.find(item => item === tag)) {
+        itemTags = itemTags.filter(item => item !== tag);   
+      }
+      else {
+        itemTags.push(tag);
+      }
+
+    }
+
+    const addTagsOnCard = () => {
+
+        tempTag && itemTags.push(tempTag);
+
+        const addedTags = {...note, tags:itemTags};
+        editNote(addedTags, authState, noteDispatch, setUserNote);
+        setTagBox(pre => !pre);
+    }
+
     return (
         <div className={`notes-card ${note.color}`}>
             <div className="notes-content" >
@@ -43,6 +69,19 @@ const NotesCard = ({ note }) => {
                     <p className="note-date"> {note.date} </p>
                 </div>
                 <div className="card-content" dangerouslySetInnerHTML={{ __html: note.content}} />
+            </div>
+            <div className="tag-chips">
+                {
+                    note.tags.map( item => (
+                        
+                        <div key={item} className="chip">
+                            <span >{item} </span> 
+                            <span onClick={() => deleteChip(item, note, authState, noteDispatch, setUserNote)} className="delete-chip">&times;</span>
+                        </div>
+                        
+                    ))
+                }
+                
             </div>
             <div className="cards-tools-container">
                 <div className="color-container">
@@ -65,7 +104,85 @@ const NotesCard = ({ note }) => {
                     }
                     
                 </div>
-                <MdOutlineLabel className="card-tool cursor"/>
+                <div className="tag-container">
+                    <MdOutlineLabel onClick={() => setTagBox((pre) => !pre)} className="card-tool cursor"/>
+
+                    {
+                        tagBox
+                        &&
+                        <div className="tag-outer-container">
+                            <div className="tags-selection-container">
+                                <div className="tag-box">
+                                    <div className="tag">
+                                        <input 
+                                        name="work" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("work")}
+                                        checked={note.tags.find(item => item === "work")}
+                                        />
+                                        <label htmlFor="work">Work</label>
+                                    </div>
+                                    <div className="tag">
+                                        <input 
+                                        name="health" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("health")}
+                                        checked={note.tags.find(item => item === "health")}
+                                         />
+                                        <label htmlFor="health">Health</label>
+                                    </div>
+                                    <div className="tag">
+                                        <input 
+                                        name="creativity" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("creativity")}
+                                        checked={note.tags.find(item => item === "creativity")}
+                                         />
+                                        <label htmlFor="creativity">Creativity</label>
+                                    </div>
+                                </div>
+
+                                <div className="tag-box">
+                                    <div className="tag">
+                                        <input 
+                                        name="exercise" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("exercise")}
+                                        checked={note.tags.find(item => item === "exercise")}
+                                         />
+                                        <label htmlFor="exercise">Exercise</label>                           
+                                    </div>
+                                    <div className="tag">
+                                        <input 
+                                        name="chores" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("chores")}
+                                        checked={note.tags.find(item => item === "chores")}
+                                         />
+                                        <label htmlFor="chores">Chores</label>
+                                    </div>
+                                    <div className="tag">
+                                        <input 
+                                        name="study" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("study")}
+                                        checked={note.tags.find(item => item === "study")}
+                                         />
+                                        <label htmlFor="teams">Study</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input 
+                            className="user-input-tag" 
+                            placeholder="Add New Tag" 
+                            type="text"
+                            onChange={addInputTagValue}
+                             />
+                            <button onClick={addTagsOnCard} className="btn btn-primary-outline">Add Tags</button>
+                        </div>
+                    }
+                
+                </div>
                 <RiInboxArchiveLine onClick={() => archiveNotes(note, authState, noteDispatch, setUserNote)} className="card-tool cursor" />
                 <FiTrash2 onClick={() => deleteNote(note, authState, noteDispatch, setUserNote)} className="card-tool cursor "/>
                 <MdOutlineModeEdit onClick={() => changeInputs(note)} className="card-tool cursor "/>

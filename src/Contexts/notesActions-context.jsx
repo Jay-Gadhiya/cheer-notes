@@ -1,6 +1,6 @@
 import { notesReducer } from "../Reducers/notesActions-reducer";
 
-const { createContext, useContext, useReducer, useState } = require("react");
+const { createContext, useContext, useReducer, useState, useEffect } = require("react");
 
 const NoteContext = createContext();
 const useNote = () => useContext(NoteContext);
@@ -14,8 +14,11 @@ const NotesProvider = ({ children }) => {
         date : "", 
         flag : false, 
         _id : "",
-        color : ""
+        color : "",
+        tags : []
     });
+
+
     const [activePage, setActivePage] = useState("notes");
     const [color, setColor] = useState("");
     return (

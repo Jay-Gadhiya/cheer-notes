@@ -1,0 +1,17 @@
+
+.tags-cards-area {
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.tag-heading {
+    margin: 1rem 0 0 2rem;
+
+}
+
+.space-devider {
+    background-color: #cecbcb;
+    height: 1px;
+    width: 100%;
+    margin: 1rem 0 1rem 2rem;
+}

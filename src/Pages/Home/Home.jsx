@@ -19,6 +19,9 @@ export const HomePage = () => {
     const { noteState, noteDispatch, userNote, setUserNote } = useNote();
     const { authState } = useAuth();
     const [colorPalate, setColorPalate] = useState(false);
+    const [tagBox, setTagBox] = useState(false);
+    let itemTags = [...userNote.tags];
+    let tempTag = "";
 
     const userColorInputHandler = (colorName) => {
         setUserNote(pre => ({...pre, color : colorName}));
@@ -31,7 +34,7 @@ export const HomePage = () => {
         ?
             editNote(userNote, authState, noteDispatch, setUserNote)
         :
-        addNote(userNote, authState, noteDispatch, setUserNote)
+            addNote(userNote, authState, noteDispatch, setUserNote)
            
     }
 
@@ -47,6 +50,29 @@ export const HomePage = () => {
         setUserNote(pre => ({...pre, content : e}))
     }
 
+
+    const addTagsInArray = (tag) => {
+      
+        if(itemTags.find(item => item === tag)) {
+          itemTags = itemTags.filter(item => item !== tag);   
+        }
+        else {
+          itemTags.push(tag);
+        }
+  
+      }
+
+    const addInputTagValue = (e) => {
+        tempTag = e.target.value;
+    }
+
+    const addTagsOnCard = () => {
+
+        tempTag && itemTags.push(tempTag);
+
+        setUserNote(pre => ({...pre, tags : itemTags}))
+        setTagBox(pre => !pre);
+    }
    
 
     return (
@@ -80,7 +106,7 @@ export const HomePage = () => {
                         <div className="tools-container">
                             <div className="tools">
                                 <MdOutlineColorLens onClick={colorPalateShow} className="cursor" />
-                                <MdOutlineLabel className="mr-left cursor"/>
+                                <MdOutlineLabel onClick={() => setTagBox((pre) => !pre)} className="mr-left cursor"/>
                             </div>
 
                             {
@@ -112,6 +138,85 @@ export const HomePage = () => {
                                 <button onClick={() => userColorInputHandler("grey")} className="btn-color grey"></button>
                             </div>
                         }                        
+                    </div>
+
+                    <div className="tag-container-home">
+
+                    {
+                        tagBox
+                        &&
+                        <div className="tag-outer-container-home">
+                            <div className="tags-selection-container">
+                                <div className="tag-box">
+                                    <div className="tag">
+                                        <input 
+                                        name="work" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("work")}
+                                        checked={userNote.tags.find(item => item === "work")}
+                                        />
+                                        <label htmlFor="work">Work</label>
+                                    </div>
+                                    <div className="tag">
+                                        <input 
+                                        name="health" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("health")}
+                                        checked={userNote.tags.find(item => item === "health")}
+                                        />
+                                        <label htmlFor="health">Health</label>
+                                    </div>
+                                    <div className="tag">
+                                        <input 
+                                        name="creativity" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("creativity")}
+                                        checked={userNote.tags.find(item => item === "creativity")}
+                                        />
+                                        <label htmlFor="creativity">Creativity</label>
+                                    </div>
+                                </div>
+
+                                <div className="tag-box">
+                                    <div className="tag">
+                                        <input 
+                                        name="exercise" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("exercise")}
+                                        checked={userNote.tags.find(item => item === "exercise")}
+                                        />
+                                        <label htmlFor="exercise">Exercise</label>                           
+                                    </div>
+                                    <div className="tag">
+                                        <input 
+                                        name="chores" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("chores")}
+                                        checked={userNote.tags.find(item => item === "chores")}
+                                        />
+                                        <label htmlFor="chores">Chores</label>
+                                    </div>
+                                    <div className="tag">
+                                        <input 
+                                        name="study" 
+                                        type="checkbox"
+                                        onClick={() => addTagsInArray("study")}
+                                        checked={userNote.tags.find(item => item === "study")}
+                                        />
+                                        <label htmlFor="teams">Study</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input 
+                            className="user-input-tag" 
+                            placeholder="Add New Tag" 
+                            type="text"
+                            onChange={addInputTagValue}
+                            />
+                            <button onClick={() => addTagsOnCard()}  className="btn btn-primary-outline">Add Tags</button>
+                        </div>
+                    }
+                
                     </div>
                    
                     <div className="notes-cards-container">

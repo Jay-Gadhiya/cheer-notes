@@ -24,6 +24,13 @@ const ArchiveCard = ({ archive }) => {
                     </div>
                     <div className="card-content" dangerouslySetInnerHTML={{ __html: archive.content}} /> 
                 </div>
+                <div className="tag-chips">
+                {
+                    archive.tags.map( item => (
+                        <span key={item} className="chip">{item}</span>
+                    ))
+                }
+            </div>
                 <div className="cards-tools-container">
                     <BiArchiveOut onClick={() => restoreFromArchive(archive, authState, noteDispatch)} className="card-tool cursor" />
                     <FiTrash2 onClick={() => deleteFromArchive(archive, authState, noteDispatch)} className="card-tool cursor "/>
