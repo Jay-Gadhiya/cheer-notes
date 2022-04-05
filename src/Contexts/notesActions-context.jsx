@@ -15,6 +15,7 @@ const NotesProvider = ({ children }) => {
         flag : false, 
         _id : "",
         color : "",
+        priority : "",
         tags : []
     });
 
