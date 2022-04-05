@@ -9,19 +9,40 @@ import { CgProfile } from 'react-icons/cg';
 import { useAuth } from "../../Contexts/authentication-context";
 import { Link } from "react-router-dom";
 import { useNote } from "../../Contexts/notesActions-context";
+import { useState } from "react/cjs/react.development";
 
 
 const Aside = () => {
 
     const navigate = useNavigate();
     const  { authDispatch } = useAuth();
-    const { activePage, setActivePage } = useNote();
+    const { activePage, setActivePage, noteDispatch, priority, setPriority } = useNote();
 
-    // user logout click handler
     const logoutClickHandler = (e) => {
         localStorage.removeItem("token");
         authDispatch({ type : "USER_LOGOUT"});
         navigate("/");
+    }
+
+    const setHighPriority = () => {
+        setPriority("High");
+        noteDispatch({ type: "PRIORITY_HIGH", payload: "High" });
+    }
+
+    const setMediumPriority = () => {
+        setPriority("Medium");
+        noteDispatch({ type: "PRIORITY_MEDIUM", payload: "Medium" });
+    }
+
+    const setLowPriority = () => {
+        setPriority("Low");
+        noteDispatch({ type: "PRIORITY_LOW", payload: "Low" });
+    }
+
+    const clearFilter = () => {
+        setPriority("");
+        noteDispatch({ type: "CLEAR_FILTER" });
+
     }
 
      return (
@@ -53,11 +74,49 @@ const Aside = () => {
                 <p className="aside-title">Trash</p>
             </div>
             </Link>
+
+            <div className="filter-container">
+                <div className="filter-and-clear-box">
+                    <p className="filter-heading">Filters</p>
+                    <p onClick={() => clearFilter()} class="filter-clear">Clear</p>
+                </div>
+                <p className="filter-title">Sort by Priority</p>
+                <div className="priority-filter-options">
+                    <div className="priority-input">
+                        <input 
+                        type="radio" 
+                        name="priority" 
+                        checked={priority === "High"}
+                        onChange={() => setHighPriority()} 
+                        />
+                        <label htmlFor="high">High</label>
+                    </div>
+                    <div className="priority-input">
+                        <input 
+                        type="radio" 
+                        name="priority"
+                        checked={priority === "Medium"}
+                        onChange={() => setMediumPriority()}
+                         />
+                        <label htmlFor="medium">Medium</label>
+                    </div>
+                    <div className="priority-input">
+                        <input 
+                        type="radio" 
+                        name="priority"
+                        checked={priority === "Low"}
+                        onChange={() => setLowPriority()}
+                         />
+                        <label htmlFor="low">Low</label>
+                    </div>
+                </div>
+
+            </div>
             
             <div className="profile">
                 <div className="image-and-title-container">
                     <CgProfile className="profile-icon" />
-                    <p className="profile-name">Jay Gadhiya</p>
+                    <p className="profile-name">User Guest</p>
                 </div>
                 <AiOutlineLogout onClick={logoutClickHandler} className="aside-icon cursor" />
             </div>

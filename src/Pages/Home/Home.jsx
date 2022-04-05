@@ -101,6 +101,7 @@ export const HomePage = () => {
                             className={`quill-editor ${userNote.color} `}
                             value={userNote.content}
                             onChange={e => quillHander(e)}
+                            placeholder={"Write awsome note"}
                         />
 
                         <div className="tools-container">
