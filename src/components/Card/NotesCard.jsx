@@ -5,7 +5,6 @@ import { MdOutlineColorLens } from 'react-icons/md';
 import { FiTrash2 } from 'react-icons/fi';
 import { MdOutlineModeEdit } from 'react-icons/md';
 import { MdInvertColorsOff } from 'react-icons/md';
-import axios from "axios";
 import { useAuth } from "../../Contexts/authentication-context";
 import { useNote } from "../../Contexts/notesActions-context";
 import { deleteNote } from "../../Utilities-Functions/deleteNote";
@@ -61,12 +60,20 @@ const NotesCard = ({ note }) => {
         setTagBox(pre => !pre);
     }
 
+    const priorityAdd = (e) => {
+        const addedPriority = {...note, priority:e.target.value};
+        editNote(addedPriority, authState, noteDispatch, setUserNote);
+    }
+
     return (
         <div className={`notes-card ${note.color}`}>
             <div className="notes-content" >
                 <div className="title-and-date-box">
                     <h3 className="card-title"> {note.title} </h3>
-                    <p className="note-date"> {note.date} </p>
+                    <div className="date-and-priority-box">
+                        <p className={`priority-tag ${note.priority && note.priority}`}>{note.priority}</p>
+                        <p className="note-date"> {note.date} </p>
+                    </div>
                 </div>
                 <div className="card-content" dangerouslySetInnerHTML={{ __html: note.content}} />
             </div>
@@ -186,6 +193,12 @@ const NotesCard = ({ note }) => {
                 <RiInboxArchiveLine onClick={() => archiveNotes(note, authState, noteDispatch, setUserNote)} className="card-tool cursor" />
                 <FiTrash2 onClick={() => deleteNote(note, authState, noteDispatch, setUserNote)} className="card-tool cursor "/>
                 <MdOutlineModeEdit onClick={() => changeInputs(note)} className="card-tool cursor "/>
+                <select onChange={(e) => priorityAdd(e)} id="Priority" value={note.priority} >
+                    <option value="">Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
             </div>
         </div>
     )

@@ -8,7 +8,10 @@ const TagsCard = ({note}) => {
             <div className="notes-content" >
                 <div className="title-and-date-box">
                     <h3 className="card-title"> {note.title} </h3>
-                    <p className="note-date"> {note.date} </p>
+                    <div className="date-and-priority-box">
+                        <p className={`priority-tag ${note.priority && note.priority}`}>{note.priority}</p>
+                        <p className="note-date"> {note.date} </p>
+                    </div>
                 </div>
                 <div className="card-content" dangerouslySetInnerHTML={{ __html: note.content}} />
             </div>

@@ -20,7 +20,10 @@ const ArchiveCard = ({ archive }) => {
                 <div className="notes-content">
                     <div className="title-and-date-box">
                         <h3 className="card-title"> {archive.title} </h3>
-                        <p className="note-date"> {archive.date} </p>
+                        <div className="date-and-priority-box">
+                            <p className={`priority-tag ${archive.priority && archive.priority}`}>{archive.priority}</p>
+                            <p className="note-date"> {archive.date} </p>
+                        </div>
                     </div>
                     <div className="card-content" dangerouslySetInnerHTML={{ __html: archive.content}} /> 
                 </div>
