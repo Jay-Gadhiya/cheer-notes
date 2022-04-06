@@ -12,6 +12,7 @@ import { archiveNotes } from "../../Utilities-Functions/archiveNote";
 import { editNote } from "../../Utilities-Functions/editNote";
 import { useState } from "react";
 import { deleteChip } from "../../Utilities-Functions/deleteChip";
+import { useClickOutside } from "../../Utilities-Functions/useClickOutside";
 
 const NotesCard = ({ note }) => {
 
@@ -21,6 +22,14 @@ const NotesCard = ({ note }) => {
     const [tagBox, setTagBox] = useState(false);
     let itemTags = [...note.tags];
     let tempTag = "";
+
+    const colorPalateRef = useClickOutside(() => {
+        setColorPalate(false);
+    });
+
+    const tagBoxRef = useClickOutside(() => {
+        setTagBox(false);
+    });
 
     const changeInputs = (note) => {
         console.log("note", note);
@@ -35,10 +44,6 @@ const NotesCard = ({ note }) => {
        editNote(addedColorItem, authState, noteDispatch);
        noteDispatch({ type: "CLEAR_FILTER" });
        setFilterNote(pre => ({...pre, priority : "", sortByDate : ""}));
-    }
-
-    const colorPalateShow = (note) => {
-        setColorPalate(pre => !pre);
     }
 
     const addInputTagValue = (e) => {
@@ -101,8 +106,8 @@ const NotesCard = ({ note }) => {
                 
             </div>
             <div className="cards-tools-container">
-                <div className="color-container">
-                    <MdOutlineColorLens onClick={() => colorPalateShow(note)} className="card-tool cursor" />
+                <div ref={colorPalateRef} className="color-container">
+                    <MdOutlineColorLens onClick={() => setColorPalate((isOpen) => !isOpen)} className="card-tool cursor" />
                     {
                         colorPalate 
                         && 
@@ -121,8 +126,8 @@ const NotesCard = ({ note }) => {
                     }
                     
                 </div>
-                <div className="tag-container">
-                    <MdOutlineLabel onClick={() => setTagBox((pre) => !pre)} className="card-tool cursor"/>
+                <div ref={tagBoxRef}  className="tag-container">
+                    <MdOutlineLabel  onClick={() => setTagBox((pre) => !pre)} className="card-tool cursor"/>
 
                     {
                         tagBox

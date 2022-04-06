@@ -27,8 +27,6 @@ body {
 
 .btn-forms-colors-container {
     position: absolute;
-    bottom: -36px;
-    left: 14rem;
     display: flex;
     border-radius: 8px;
     background-color: #fff;
@@ -116,6 +114,9 @@ body {
 .tools-container {
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 40rem;
+    margin: auto;
 }
 
 .tools {
@@ -167,11 +168,21 @@ body {
     position: relative;
 }
 
+.tags-selection-container-home {
+    display: flex;
+    /* flex-wrap: wrap; */
+    width: 12rem;
+    justify-content: space-around;
+}
+
 .tag-outer-container-home {
     position: absolute;
-    top: -0.5rem;
-    left: 15rem;
+    left: 2rem;
     background-color: #fff;
     box-shadow: 0 1px 5px rgb(128 128 128);
     width: 12rem;
+}
+
+.tag-box {
+    font-size: 1rem;
 }
