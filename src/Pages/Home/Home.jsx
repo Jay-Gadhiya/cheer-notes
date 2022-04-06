@@ -10,7 +10,7 @@ import { useNote } from "../../Contexts/notesActions-context";
 import { useAuth } from "../../Contexts/authentication-context";
 import { addNote } from "../../Utilities-Functions/addNote";
 import { editNote } from "../../Utilities-Functions/editNote";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 
@@ -20,6 +20,8 @@ export const HomePage = () => {
     const { authState } = useAuth();
     const [colorPalate, setColorPalate] = useState(false);
     const [tagBox, setTagBox] = useState(false);
+    const d = new Date();
+    const time = d.getTime();
     let itemTags = [...userNote.tags];
     let tempTag = "";
 
@@ -43,7 +45,7 @@ export const HomePage = () => {
     }
 
     const userInputsHandler = (e) => {
-        setUserNote(pre => ({...pre, title : e.target.value, date : new Date(Date.now()).toLocaleString().split(',')[0]}))
+        setUserNote(pre => ({...pre, title : e.target.value, time : time ,date : new Date(Date.now()).toLocaleString()}));
     }
 
     const quillHander = (e) => {

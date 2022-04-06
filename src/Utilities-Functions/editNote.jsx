@@ -9,11 +9,14 @@ const editNote = async (note, authState, noteDispatch, setUserNote) => {
             noteDispatch({type : "EDIT_NOTE", payload : res.data.notes });
             setUserNote(pre => ({ ...pre, title : "", content : "", color : "",flag : false, tags : [] }));
         }
-        
+
     } catch (error) {
         return error;
     
     }
+
+    
 }
 
 export { editNote};
+

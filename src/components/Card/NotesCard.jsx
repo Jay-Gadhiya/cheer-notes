@@ -16,7 +16,7 @@ import { deleteChip } from "../../Utilities-Functions/deleteChip";
 const NotesCard = ({ note }) => {
 
     const { authState } = useAuth();
-    const { noteDispatch, setUserNote, userNote, color, setColor } = useNote();
+    const { noteDispatch, setUserNote, setFilterNote, filterNote } = useNote();
     const [colorPalate, setColorPalate] = useState(false);
     const [tagBox, setTagBox] = useState(false);
     let itemTags = [...note.tags];
@@ -24,12 +24,17 @@ const NotesCard = ({ note }) => {
 
     const changeInputs = (note) => {
         console.log("note", note);
-        setUserNote(pre => ({...pre, title : note.title, content : note.content , flag : true, _id : note._id , color : note.color, tags : note.tags ,date : new Date(Date.now()).toLocaleString().split(',')[0]}));
+        setUserNote(pre => ({...pre, title : note.title, content : note.content , flag : true, _id : note._id , color : note.color, tags : note.tags , time : note.time ,date : new Date(Date.now()).toLocaleString()}));
+        setFilterNote(pre => ({...pre, priority : ""}));
+        noteDispatch({ type: "CLEAR_FILTER" });
+        setFilterNote(pre => ({...pre, priority : "", sortByDate : ""}));
     }
 
     const applyColorOnCard = (colorName, note) => {
        const addedColorItem = {...note, color : colorName};
-       editNote(addedColorItem, authState, noteDispatch, setUserNote);
+       editNote(addedColorItem, authState, noteDispatch);
+       noteDispatch({ type: "CLEAR_FILTER" });
+       setFilterNote(pre => ({...pre, priority : "", sortByDate : ""}));
     }
 
     const colorPalateShow = (note) => {
@@ -56,13 +61,18 @@ const NotesCard = ({ note }) => {
         tempTag && itemTags.push(tempTag);
 
         const addedTags = {...note, tags:itemTags};
-        editNote(addedTags, authState, noteDispatch, setUserNote);
+        editNote(addedTags, authState, noteDispatch);
         setTagBox(pre => !pre);
+        noteDispatch({ type: "CLEAR_FILTER" });
+        setFilterNote(pre => ({...pre, priority : "", sortByDate : ""}));
+
     }
 
     const priorityAdd = (e) => {
         const addedPriority = {...note, priority:e.target.value};
-        editNote(addedPriority, authState, noteDispatch, setUserNote);
+        editNote(addedPriority, authState, noteDispatch);
+        noteDispatch({ type: "CLEAR_FILTER" });
+        setFilterNote(pre => ({...pre, priority : "", sortByDate : ""}));
     }
 
     return (
@@ -190,8 +200,8 @@ const NotesCard = ({ note }) => {
                     }
                 
                 </div>
-                <RiInboxArchiveLine onClick={() => archiveNotes(note, authState, noteDispatch, setUserNote)} className="card-tool cursor" />
-                <FiTrash2 onClick={() => deleteNote(note, authState, noteDispatch, setUserNote)} className="card-tool cursor "/>
+                <RiInboxArchiveLine onClick={() => archiveNotes(note, authState, noteDispatch, setUserNote, setFilterNote)} className="card-tool cursor" />
+                <FiTrash2 onClick={() => deleteNote(note, authState, noteDispatch, setUserNote, setFilterNote)} className="card-tool cursor "/>
                 <MdOutlineModeEdit onClick={() => changeInputs(note)} className="card-tool cursor "/>
                 <select onChange={(e) => priorityAdd(e)} id="Priority" value={note.priority} >
                     <option value="">Priority</option>

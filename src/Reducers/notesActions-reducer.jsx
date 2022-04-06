@@ -1,6 +1,6 @@
 
 const notesReducer = (state, action) => {
-    
+
     switch (action.type) {
         case "ADD_NOTE":
             return {...state, notes : action.payload, allNotesData : action.payload };
@@ -40,6 +40,14 @@ const notesReducer = (state, action) => {
 
         case "PRIORITY_LOW":
             return {...state, notes : state.allNotesData.filter(item => item.priority === action.payload)};
+
+        case "FILTER_NEWEST_FIRST":
+            console.log("new")
+            return {...state, notes : state.notes.sort((a, b) => Number(b.time) - Number(a.time))};
+
+        case "FILTER_OLDEST_FIRST":
+            console.log("old")
+            return {...state, notes : state.notes.sort((a, b) => a.time - b.time)};  
         
         case "CLEAR_FILTER":
             return {...state, notes : state.allNotesData};

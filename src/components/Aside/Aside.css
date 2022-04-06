@@ -81,13 +81,13 @@
 .filter-title {
     font-size: 1.3rem;
     margin-bottom: .5rem;
+    margin-top: .6rem;
 }
 
 .filter-and-clear-box {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #bdb9b9;
-    margin-bottom: 1rem;
 }
 
 .filter-clear {

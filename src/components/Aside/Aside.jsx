@@ -9,14 +9,12 @@ import { CgProfile } from 'react-icons/cg';
 import { useAuth } from "../../Contexts/authentication-context";
 import { Link } from "react-router-dom";
 import { useNote } from "../../Contexts/notesActions-context";
-import { useState } from "react/cjs/react.development";
-
 
 const Aside = () => {
 
     const navigate = useNavigate();
     const  { authDispatch } = useAuth();
-    const { activePage, setActivePage, noteDispatch, priority, setPriority } = useNote();
+    const { activePage, setActivePage, noteDispatch, filterNote, setFilterNote } = useNote();
 
     const logoutClickHandler = (e) => {
         localStorage.removeItem("token");
@@ -25,24 +23,35 @@ const Aside = () => {
     }
 
     const setHighPriority = () => {
-        setPriority("High");
+        setFilterNote(pre => ({...pre, priority : "High"}));
         noteDispatch({ type: "PRIORITY_HIGH", payload: "High" });
     }
 
     const setMediumPriority = () => {
-        setPriority("Medium");
+        setFilterNote(pre => ({...pre, priority : "Medium"}));
         noteDispatch({ type: "PRIORITY_MEDIUM", payload: "Medium" });
     }
 
     const setLowPriority = () => {
-        setPriority("Low");
+        setFilterNote(pre => ({...pre, priority : "Low"}));
         noteDispatch({ type: "PRIORITY_LOW", payload: "Low" });
     }
 
     const clearFilter = () => {
-        setPriority("");
+        setFilterNote(pre => ({...pre, priority : "", sortByDate : ""}));
         noteDispatch({ type: "CLEAR_FILTER" });
+    }
 
+    const newestFirstNote = () => {
+        setFilterNote(pre => ({...pre, sortByDate : "newest"}));
+        setFilterNote(pre => ({...pre, priority : ""}));
+        noteDispatch({ type: "FILTER_NEWEST_FIRST" });  
+    }
+
+    const oldestFirstNote = () => {
+        setFilterNote(pre => ({...pre, sortByDate : "oldest"}));
+        setFilterNote(pre => ({...pre, priority : ""}));
+        noteDispatch({ type: "FILTER_OLDEST_FIRST" });  
     }
 
      return (
@@ -78,7 +87,7 @@ const Aside = () => {
             <div className="filter-container">
                 <div className="filter-and-clear-box">
                     <p className="filter-heading">Filters</p>
-                    <p onClick={() => clearFilter()} class="filter-clear">Clear</p>
+                    <p onClick={() => clearFilter()} className="filter-clear">Clear</p>
                 </div>
                 <p className="filter-title">Sort by Priority</p>
                 <div className="priority-filter-options">
@@ -86,7 +95,7 @@ const Aside = () => {
                         <input 
                         type="radio" 
                         name="priority" 
-                        checked={priority === "High"}
+                        checked={filterNote.priority === "High"}
                         onChange={() => setHighPriority()} 
                         />
                         <label htmlFor="high">High</label>
@@ -95,7 +104,7 @@ const Aside = () => {
                         <input 
                         type="radio" 
                         name="priority"
-                        checked={priority === "Medium"}
+                        checked={filterNote.priority === "Medium"}
                         onChange={() => setMediumPriority()}
                          />
                         <label htmlFor="medium">Medium</label>
@@ -104,11 +113,33 @@ const Aside = () => {
                         <input 
                         type="radio" 
                         name="priority"
-                        checked={priority === "Low"}
+                        checked={filterNote.priority === "Low"}
                         onChange={() => setLowPriority()}
                          />
                         <label htmlFor="low">Low</label>
                     </div>
+                </div>
+
+                <p className="filter-title">Sort by Date</p> 
+                <div className="priority-filter-options">
+                    <div className="priority-input">
+                            <input 
+                            type="radio" 
+                            name="sortByDate"
+                            checked={filterNote.sortByDate === "newest"}
+                            onChange={() => newestFirstNote()}
+                            />
+                            <label htmlFor="low">Newest First</label>
+                    </div> 
+                    <div className="priority-input">
+                            <input 
+                            type="radio" 
+                            name="sortByDate"
+                            checked={filterNote.sortByDate === "oldest"}
+                            onChange={() => oldestFirstNote()}
+                            />
+                            <label htmlFor="low">Oldest First</label>
+                    </div> 
                 </div>
 
             </div>
