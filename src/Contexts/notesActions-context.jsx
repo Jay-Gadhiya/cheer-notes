@@ -7,7 +7,8 @@ const useNote = () => useContext(NoteContext);
 
 const NotesProvider = ({ children }) => {
 
-    const [noteState, noteDispatch] = useReducer(notesReducer, { notes : [] , archives : [], trashNotes : [] ,date : "" });
+    const [noteState, noteDispatch] = useReducer(notesReducer, { notes : [] , archives : [], trashNotes : [], allNotesData : [] ,date : "" });
+    const [filterNote, setFilterNote] = useState({ priority:"", sortByDate: "" });
     const [userNote, setUserNote] = useState(
         { title : "", 
         content : "", 
@@ -19,11 +20,10 @@ const NotesProvider = ({ children }) => {
         tags : []
     });
 
-
     const [activePage, setActivePage] = useState("notes");
     const [color, setColor] = useState("");
     return (
-        <NoteContext.Provider value={{ noteState, noteDispatch, userNote, setUserNote, activePage, setActivePage, color, setColor }} >
+        <NoteContext.Provider value={{ noteState, noteDispatch, userNote, setUserNote, activePage, setActivePage, color, setColor, filterNote, setFilterNote }} >
             { children }
         </NoteContext.Provider>
     )
