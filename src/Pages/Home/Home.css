@@ -39,6 +39,7 @@ body {
 .notes-users-main-container {
     width: 100%;
     padding-left: 1rem;
+    padding-right: 1rem;
     height: calc(100vh - 4rem);
     overflow-y: scroll;
     padding-bottom: 10rem;

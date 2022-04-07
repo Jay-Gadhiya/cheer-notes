@@ -3,8 +3,6 @@ import axios from "axios";
 
 const addNote = async (note, authState, noteDispatch, setUserNote) => {
 
-    console.log(authState.token);
-
     try {
         const res = await axios.post("/api/notes", { note }, { headers : { authorization: authState.token } }); 
         if(res.status === 201){
@@ -15,7 +13,7 @@ const addNote = async (note, authState, noteDispatch, setUserNote) => {
         
         
     } catch (error) {
-        console.log(error);
+        return error;
     }
 
 }
