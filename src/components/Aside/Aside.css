@@ -58,7 +58,6 @@
 /* filter */
 
 .filter-container {
-    /* border: 1px solid black; */
     margin-top: 1rem;
     padding-left: 1.6rem;
 }
@@ -93,4 +92,42 @@
 .filter-clear {
     cursor: pointer;
     font-size: 1.2rem;
+}
+
+.close-menu-container {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    display: none;
+}
+
+.close-menu {
+    font-size: 2rem;
+    margin-right: 1.2rem;
+}
+
+.block {
+    display: block;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 700px) {
+    .hide-show {
+        z-index: 1;
+        position: absolute;
+        background-color: #fff;
+    }
+
+    .block {
+        display: none;
+    }
+
+    .profile {
+        display: none;
+    }
+
+    .close-menu-container {
+        display: block;
+    }
 }

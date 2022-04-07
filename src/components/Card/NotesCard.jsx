@@ -15,6 +15,7 @@ import { deleteChip } from "../../Utilities-Functions/deleteChip";
 import { useClickOutside } from "../../Utilities-Functions/useClickOutside";
 
 const NotesCard = ({ note }) => {
+    console.log("note", note);
 
     const { authState } = useAuth();
     const { noteDispatch, setUserNote, setFilterNote, filterNote } = useNote();

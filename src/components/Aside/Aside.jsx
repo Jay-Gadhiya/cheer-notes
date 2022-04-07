@@ -9,12 +9,14 @@ import { CgProfile } from 'react-icons/cg';
 import { useAuth } from "../../Contexts/authentication-context";
 import { Link } from "react-router-dom";
 import { useNote } from "../../Contexts/notesActions-context";
+import { useMenu } from "../../Contexts/showMenuContext";
 
 const Aside = () => {
 
     const navigate = useNavigate();
     const  { authDispatch } = useAuth();
     const { activePage, setActivePage, noteDispatch, filterNote, setFilterNote } = useNote();
+    const { showMenu, setShowMenu } = useMenu();
 
     const logoutClickHandler = (e) => {
         localStorage.removeItem("token");
@@ -56,6 +58,10 @@ const Aside = () => {
 
      return (
         <aside className="notes-aside-container">
+            <div className={`hide-show ${!showMenu && "block" }`}>
+                <div className="close-menu-container">
+                    <span onClick={() => setShowMenu(open => !open)} className="close-menu"> &times; </span>
+                </div>
             <Link to="/home">
                 <div onClick={() => setActivePage("notes")} className={`aside-items ${activePage === "notes" ? "item-active" : ""}`}>
                     <CgNotes className="aside-icon"/>
@@ -143,6 +149,7 @@ const Aside = () => {
                 </div>
 
             </div>
+            </div>
             
             <div className="profile">
                 <div className="image-and-title-container">
@@ -150,8 +157,7 @@ const Aside = () => {
                     <p className="profile-name">User Guest</p>
                 </div>
                 <AiOutlineLogout onClick={logoutClickHandler} className="aside-icon cursor" />
-            </div>
-            
+            </div>            
         </aside>
 
      )
