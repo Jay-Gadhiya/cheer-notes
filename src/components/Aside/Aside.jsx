@@ -9,12 +9,15 @@ import { CgProfile } from 'react-icons/cg';
 import { useAuth } from "../../Contexts/authentication-context";
 import { Link } from "react-router-dom";
 import { useNote } from "../../Contexts/notesActions-context";
+import { useMenu } from "../../Contexts/showMenuContext";
+import { useClickOutside } from "../../Utilities-Functions/useClickOutside";
 
 const Aside = () => {
-
+    
     const navigate = useNavigate();
     const  { authDispatch } = useAuth();
     const { activePage, setActivePage, noteDispatch, filterNote, setFilterNote } = useNote();
+    const { showMenu, setShowMenu } = useMenu();
 
     const logoutClickHandler = (e) => {
         localStorage.removeItem("token");
@@ -54,30 +57,35 @@ const Aside = () => {
         noteDispatch({ type: "FILTER_OLDEST_FIRST" });  
     }
 
+    const sideMenu = useClickOutside(() => {
+        setShowMenu(false);
+    })
+
      return (
-        <aside className="notes-aside-container">
-            <Link to="/home">
+        <aside ref={sideMenu} className="notes-aside-container">
+            <div className={`hide-show ${!showMenu && "block" }`}>
+            <Link to="/home" onClick={() => setShowMenu(open => !open)}>
                 <div onClick={() => setActivePage("notes")} className={`aside-items ${activePage === "notes" ? "item-active" : ""}`}>
                     <CgNotes className="aside-icon"/>
                     <p className="aside-title">Notes</p>
                 </div>
             </Link>  
 
-            <Link to="/tags">
+            <Link to="/tags" onClick={() => setShowMenu(open => !open)}>
             <div onClick={() => setActivePage("label")} className={`aside-items ${activePage === "label" ? "item-active" : ""}`}>
                 <MdOutlineLabel className="aside-icon"/>
                 <p className="aside-title">Tags</p>
             </div>
             </Link>
         
-            <Link to="/archive">
+            <Link to="/archive" onClick={() => setShowMenu(open => !open)}>
             <div onClick={() => setActivePage("archive")} className={`aside-items ${activePage === "archive" ? "item-active" : ""}`}>
                 <RiInboxArchiveLine className="aside-icon"/>
                 <p className="aside-title">Archive</p>
             </div>
             </Link>
           
-            <Link to="/trash">
+            <Link to="/trash" onClick={() => setShowMenu(open => !open)}>
             <div onClick={() => setActivePage("trash")} className={`aside-items ${activePage === "trash" ? "item-active" : ""}`}>
                 <FaRegTrashAlt className="aside-icon"/>
                 <p className="aside-title">Trash</p>
@@ -143,6 +151,7 @@ const Aside = () => {
                 </div>
 
             </div>
+            </div>
             
             <div className="profile">
                 <div className="image-and-title-container">
@@ -150,8 +159,7 @@ const Aside = () => {
                     <p className="profile-name">User Guest</p>
                 </div>
                 <AiOutlineLogout onClick={logoutClickHandler} className="aside-icon cursor" />
-            </div>
-            
+            </div>            
         </aside>
 
      )

@@ -54,3 +54,36 @@
     font-size: 1rem;
     background-color: #f1f3f4;
 }
+
+.hamburger-icon {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-left: 2rem;
+    display: none;
+}
+
+.logout-nav-icon {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-left: auto;
+    margin-right: 1.5rem;
+    display: none;
+}
+
+@media only screen  and (max-width:700px) {
+    .hamburger-icon {
+        display: block;
+    }
+
+    .logout-nav-icon {
+        font-size: 1.5rem;
+        color: #fff;
+        margin-left: auto;
+        margin-right: 1.5rem;
+        display: block;
+    }
+
+    .heading-name {
+        font-size: 1.3rem;
+    }
+}
