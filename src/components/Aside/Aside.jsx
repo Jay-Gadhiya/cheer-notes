@@ -67,7 +67,7 @@ const Aside = () => {
 
      return (
         <aside ref={sideMenu} className={`notes-aside-container ${theme === "dark" ? "dark-bg" : ""} `}>
-            <div className={`hide-show ${!showMenu && "block" }`}>
+            <div className={`hide-show ${!showMenu && "block" } ${theme === "dark" ? "dark-bg" : ""} `}>
             <Link to="/home" onClick={() => setShowMenu(open => !open)}>
                 <div onClick={() => setActivePage("notes")} className={`aside-items  ${activePage === "notes" ? "item-active" : ""}`}>
                     <CgNotes className={`aside-icon ${activePage !== "notes" ? color : ""} `}/>
