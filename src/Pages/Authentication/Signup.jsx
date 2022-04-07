@@ -40,7 +40,7 @@ const Signup = () => {
     
 
     return (
-        <form className="auth-container">
+        <form onSubmit={signupHandler} className="auth-container">
             <header className="heading-box flex-center">
                 <h2 className="auth-heading">Signup</h2>
             </header>
@@ -49,12 +49,12 @@ const Signup = () => {
 
                 <div className="auth-name-box flex auth-name-input">
                     <label htmlFor="email" className="auth-label">First Name</label>
-                    <input onChange={userInputValues} name="firstName" className="auth-input" type="email" placeholder="Type first name" required />
+                    <input onChange={userInputValues} name="firstName" className="auth-input" type="text" placeholder="Type first name" required />
                 </div>
 
                 <div className="auth-name-box auth-name-input flex">
                     <label htmlFor="email" className="auth-label">Last Name</label>
-                    <input onChange={userInputValues}  name="lastName" className="auth-input last-name" type="email" placeholder="Type last name" required />
+                    <input onChange={userInputValues}  name="lastName" className="auth-input last-name" type="text" placeholder="Type last name" required />
                 </div>
                 
             </div>
@@ -78,7 +78,7 @@ const Signup = () => {
             </div>
     
             <div className="auth-btn width-100">
-                <button onClick={signupHandler} className="btn btn-primary">Create New Account</button>
+                <button  className="btn btn-primary">Create New Account</button>
             </div>
     
             <div className="auth-btn width-100">

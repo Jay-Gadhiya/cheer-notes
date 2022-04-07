@@ -38,7 +38,7 @@ const Login = () => {
             navigate("/home");
 
         } catch (error) {
-            return error;
+            alert("please enter valid username or password");
         }
 
     }
