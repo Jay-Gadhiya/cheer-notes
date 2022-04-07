@@ -10,7 +10,7 @@ const addNote = async (note, authState, noteDispatch, setUserNote) => {
 
         if(res.status === 201){
             console.log(res);
-            setUserNote(pre => ({ ...pre, title : "", content : "", color : "" }));
+            setUserNote(pre => ({ ...pre, title : "", content : "", color : "", tags : [] }));
             noteDispatch({type : "ADD_NOTE", payload : res.data.notes }); 
         }
         
