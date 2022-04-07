@@ -13,6 +13,7 @@ import { editNote } from "../../Utilities-Functions/editNote";
 import { useState } from "react";
 import { deleteChip } from "../../Utilities-Functions/deleteChip";
 import { useClickOutside } from "../../Utilities-Functions/useClickOutside";
+import { useTheme } from "../../Contexts/themeContext";
 
 const NotesCard = ({ note }) => {
 
@@ -20,6 +21,7 @@ const NotesCard = ({ note }) => {
     const { noteDispatch, setUserNote, setFilterNote, filterNote } = useNote();
     const [colorPalate, setColorPalate] = useState(false);
     const [tagBox, setTagBox] = useState(false);
+    const { theme } = useTheme();
     let itemTags = [...note.tags];
     let tempTag = "";
 
@@ -81,7 +83,7 @@ const NotesCard = ({ note }) => {
     }
 
     return (
-        <div className={`notes-card ${note.color}`}>
+        <div className={`notes-card ${note.color} ${!note.color && (theme === "dark" ? "white" : "")} `}>
             <div className="notes-content" >
                 <div className="title-and-date-box">
                     <h3 className="card-title"> {note.title} </h3>

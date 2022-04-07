@@ -2,6 +2,7 @@ import { Aside } from "../../components/Aside/Aside";
 import { Navbar } from "../../components/Navbar/Navbar";
 import { TagsCard } from "../../components/TagsCard/TagsCard";
 import { useNote } from "../../Contexts/notesActions-context";
+import { useTheme } from "../../Contexts/themeContext";
 import "../../Pages/Home/Home.css";
 import "./Tags.css";
 
@@ -9,6 +10,7 @@ import "./Tags.css";
 const Tags = () => {
 
     const { noteState } = useNote();
+    const { theme } = useTheme();
  
     return (
         <>
@@ -17,12 +19,12 @@ const Tags = () => {
         <div className="notes-main-container">
             <Aside />
 
-            <main className="notes-users-main-container">
+            <main className={`notes-users-main-container ${theme === "dark" ? "dark-bg" : ""} `}>
 
                 <section className="tags-notes-container">
                     
                     <div className="space-devider"></div>
-                    <h3 className="tag-heading">Work</h3>
+                    <h3 className={`tag-heading ${theme === "dark" ? "color-fff" : ""} `}>Work</h3>
                     <div className="space-devider"></div>
 
                     <div className="notes-cards-container tags-cards-area">
@@ -42,7 +44,7 @@ const Tags = () => {
                 <section className="tags-notes-container">
 
                     <div className="space-devider"></div>
-                    <h3 className="tag-heading">Exercise</h3>
+                    <h3 className={`tag-heading ${theme === "dark" ? "color-fff" : ""} `}>Exercise</h3>
                     <div className="space-devider"></div>
 
                     <div className="notes-cards-container tags-cards-area">
@@ -64,7 +66,7 @@ const Tags = () => {
                 <section className="tags-notes-container">
 
                     <div className="space-devider"></div>
-                    <h3 className="tag-heading">Health</h3>
+                    <h3 className={`tag-heading ${theme === "dark" ? "color-fff" : ""} `}>Health</h3>
                     <div className="space-devider"></div>
 
                     <div className="notes-cards-container tags-cards-area">
@@ -83,7 +85,7 @@ const Tags = () => {
                 <section className="tags-notes-container">
 
                     <div className="space-devider"></div>
-                    <h3 className="tag-heading">Chores</h3>
+                    <h3 className={`tag-heading ${theme === "dark" ? "color-fff" : ""} `}>Chores</h3>
                     <div className="space-devider"></div>
 
                     <div className="notes-cards-container tags-cards-area">
@@ -102,7 +104,7 @@ const Tags = () => {
                 <section className="tags-notes-container">
 
                     <div className="space-devider"></div>
-                    <h3 className="tag-heading">Creativity</h3>
+                    <h3 className={`tag-heading ${theme === "dark" ? "color-fff" : ""} `}>Creativity</h3>
                     <div className="space-devider"></div>
 
                     <div className="notes-cards-container tags-cards-area">
@@ -121,7 +123,7 @@ const Tags = () => {
                  <section className="tags-notes-container">
 
                     <div className="space-devider"></div>
-                    <h3 className="tag-heading">Study</h3>
+                    <h3 className={`tag-heading ${theme === "dark" ? "color-fff" : ""} `}>Study</h3>
                     <div className="space-devider"></div>
 
                     <div className="notes-cards-container tags-cards-area">
@@ -140,7 +142,7 @@ const Tags = () => {
                 <section className="tags-notes-container">
 
                     <div className="space-devider"></div>
-                    <h3 className="tag-heading">Others</h3>
+                    <h3 className={`tag-heading ${theme === "dark" ? "color-fff" : ""} `}>Others</h3>
                     <div className="space-devider"></div>
 
                     <div className="notes-cards-container tags-cards-area">

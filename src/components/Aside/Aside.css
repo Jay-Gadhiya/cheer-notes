@@ -1,8 +1,18 @@
 /* aside */
+
+
+.dark-bg {
+    background-color: #1A202C;
+}
+
+.color-fff {
+    color: #fff;
+}
+
 .notes-aside-container {
     display: flex;
     flex-direction: column;
-    margin-top: 1rem;
+    padding-top: 1rem;
     height: calc(100vh - 5rem);
 }
 
@@ -23,12 +33,14 @@
     font-size: 1.6rem;
     margin-left: 2rem;
     font-weight: 900;
+    color: inherit;
 }
 
 .aside-title {
     font-size: 1.1rem;
     margin-left: 2.5rem;
     font-weight: 600;
+    color: inherit;
 }
 
 .aside-items:hover {

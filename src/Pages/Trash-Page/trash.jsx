@@ -4,10 +4,12 @@ import { TrashCard } from "../../components/Trash-Card/TrashCard";
 import { useNote } from "../../Contexts/notesActions-context";
 import "../Home/Home.css";
 import "../Archive-Page/Archive.css";
+import { useTheme } from "../../Contexts/themeContext";
 
 const TrashPage = () => {
 
     const { noteState } = useNote();
+    const { theme } = useTheme();
 
     return (
         <>
@@ -16,9 +18,9 @@ const TrashPage = () => {
             <div className="notes-main-container">
                 <Aside />
 
-                <main className="notes-users-main-container">
+                <main className={`notes-users-main-container ${theme === "dark" ? "dark-bg" : ""} `}>
 
-                    <h2 className="archives-heading">Trash</h2>
+                    <h2 className={`archives-heading ${theme === "dark" ? "color-fff" : ""} `}>Trash</h2>
                     <hr className="line-breack" />
                    
                     <div className="notes-cards-container">

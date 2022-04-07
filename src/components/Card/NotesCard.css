@@ -1,5 +1,9 @@
 @import "../Colors/colors.css";
 
+.white {
+    background-color: #fff;
+}
+
 .notes-cards-container {
     display: flex;
     margin-top: 2.5rem;

@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { useNote } from "../../Contexts/notesActions-context";
 import { useMenu } from "../../Contexts/showMenuContext";
 import { useClickOutside } from "../../Utilities-Functions/useClickOutside";
+import { useTheme } from "../../Contexts/themeContext";
 
 const Aside = () => {
     
@@ -18,6 +19,7 @@ const Aside = () => {
     const  { authDispatch } = useAuth();
     const { activePage, setActivePage, noteDispatch, filterNote, setFilterNote } = useNote();
     const { showMenu, setShowMenu } = useMenu();
+    const { theme } = useTheme();
 
     const logoutClickHandler = (e) => {
         localStorage.removeItem("token");
@@ -61,43 +63,45 @@ const Aside = () => {
         setShowMenu(false);
     })
 
+    const color = theme === "dark" ? "color-fff" : "";
+
      return (
-        <aside ref={sideMenu} className="notes-aside-container">
+        <aside ref={sideMenu} className={`notes-aside-container ${theme === "dark" ? "dark-bg" : ""} `}>
             <div className={`hide-show ${!showMenu && "block" }`}>
             <Link to="/home" onClick={() => setShowMenu(open => !open)}>
-                <div onClick={() => setActivePage("notes")} className={`aside-items ${activePage === "notes" ? "item-active" : ""}`}>
-                    <CgNotes className="aside-icon"/>
-                    <p className="aside-title">Notes</p>
+                <div onClick={() => setActivePage("notes")} className={`aside-items  ${activePage === "notes" ? "item-active" : ""}`}>
+                    <CgNotes className={`aside-icon ${activePage !== "notes" ? color : ""} `}/>
+                    <p className={`aside-title ${activePage !== "notes" ? color : ""} `}>Notes</p>
                 </div>
             </Link>  
 
             <Link to="/tags" onClick={() => setShowMenu(open => !open)}>
             <div onClick={() => setActivePage("label")} className={`aside-items ${activePage === "label" ? "item-active" : ""}`}>
-                <MdOutlineLabel className="aside-icon"/>
-                <p className="aside-title">Tags</p>
+                <MdOutlineLabel className={`aside-icon ${activePage !== "label" ? color : ""}  `}/>
+                <p className={`aside-title ${activePage !== "label" ? color : ""} `}>Tags</p>
             </div>
             </Link>
         
             <Link to="/archive" onClick={() => setShowMenu(open => !open)}>
             <div onClick={() => setActivePage("archive")} className={`aside-items ${activePage === "archive" ? "item-active" : ""}`}>
-                <RiInboxArchiveLine className="aside-icon"/>
-                <p className="aside-title">Archive</p>
+                <RiInboxArchiveLine className={`aside-icon ${activePage !== "archive" ? color : ""} `}/>
+                <p className={`aside-title ${activePage !== "archive" ? color : ""} `}>Archive</p>
             </div>
             </Link>
           
             <Link to="/trash" onClick={() => setShowMenu(open => !open)}>
             <div onClick={() => setActivePage("trash")} className={`aside-items ${activePage === "trash" ? "item-active" : ""}`}>
-                <FaRegTrashAlt className="aside-icon"/>
-                <p className="aside-title">Trash</p>
+                <FaRegTrashAlt className={`aside-icon  ${activePage !== "trash" ? color : ""} `}/>
+                <p className={`aside-title ${activePage !== "trash" ? color : ""} `}>Trash</p>
             </div>
             </Link>
 
             <div className="filter-container">
                 <div className="filter-and-clear-box">
-                    <p className="filter-heading">Filters</p>
-                    <p onClick={() => clearFilter()} className="filter-clear">Clear</p>
+                    <p className={`filter-heading ${theme === "dark" ? "color-fff" : ""}`}>Filters</p>
+                    <p onClick={() => clearFilter()} className={`filter-clear ${theme === "dark" ? "color-fff" : ""} `}>Clear</p>
                 </div>
-                <p className="filter-title">Sort by Priority</p>
+                <p className={`filter-title ${theme === "dark" ? "color-fff" : ""} `}>Sort by Priority</p>
                 <div className="priority-filter-options">
                     <div className="priority-input">
                         <input 
@@ -106,7 +110,7 @@ const Aside = () => {
                         checked={filterNote.priority === "High"}
                         onChange={() => setHighPriority()} 
                         />
-                        <label htmlFor="high">High</label>
+                        <label className={`${theme === "dark" ? "color-fff" : ""}`} htmlFor="high">High</label>
                     </div>
                     <div className="priority-input">
                         <input 
@@ -115,7 +119,7 @@ const Aside = () => {
                         checked={filterNote.priority === "Medium"}
                         onChange={() => setMediumPriority()}
                          />
-                        <label htmlFor="medium">Medium</label>
+                        <label className={`${theme === "dark" ? "color-fff" : ""}`} htmlFor="medium">Medium</label>
                     </div>
                     <div className="priority-input">
                         <input 
@@ -124,11 +128,11 @@ const Aside = () => {
                         checked={filterNote.priority === "Low"}
                         onChange={() => setLowPriority()}
                          />
-                        <label htmlFor="low">Low</label>
+                        <label className={`${theme === "dark" ? "color-fff" : ""}`} htmlFor="low">Low</label>
                     </div>
                 </div>
 
-                <p className="filter-title">Sort by Date</p> 
+                <p className={`filter-title ${theme === "dark" ? "color-fff" : ""} `}>Sort by Date</p> 
                 <div className="priority-filter-options">
                     <div className="priority-input">
                             <input 
@@ -137,7 +141,7 @@ const Aside = () => {
                             checked={filterNote.sortByDate === "newest"}
                             onChange={() => newestFirstNote()}
                             />
-                            <label htmlFor="low">Newest First</label>
+                            <label className={`${theme === "dark" ? "color-fff" : ""}`} htmlFor="low">Newest First</label>
                     </div> 
                     <div className="priority-input">
                             <input 
@@ -146,7 +150,7 @@ const Aside = () => {
                             checked={filterNote.sortByDate === "oldest"}
                             onChange={() => oldestFirstNote()}
                             />
-                            <label htmlFor="low">Oldest First</label>
+                            <label className={`${theme === "dark" ? "color-fff" : ""}`} htmlFor="low">Oldest First</label>
                     </div> 
                 </div>
 
@@ -155,10 +159,10 @@ const Aside = () => {
             
             <div className="profile">
                 <div className="image-and-title-container">
-                    <CgProfile className="profile-icon" />
-                    <p className="profile-name">User Guest</p>
+                    <CgProfile className={`profile-icon ${theme === "dark" ? "color-fff" : ""} `} />
+                    <p className={`profile-name ${theme === "dark" ? "color-fff" : ""} `}>User Guest</p>
                 </div>
-                <AiOutlineLogout onClick={logoutClickHandler} className="aside-icon cursor" />
+                <AiOutlineLogout onClick={logoutClickHandler} className={`aside-icon cursor ${theme === "dark" ? "color-fff" : ""} `} />
             </div>            
         </aside>
 
