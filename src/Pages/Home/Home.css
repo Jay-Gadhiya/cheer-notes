@@ -12,6 +12,18 @@ body {
     color: var(--default-black);
 }
 
+.dark-bg {
+    background-color: #1A202C;
+}
+
+.color-fff {
+    color: #fff;
+}
+
+.white {
+    background-color: #fff;
+}
+
 
 /* Main */
 
@@ -187,3 +199,4 @@ body {
 .tag-box {
     font-size: 1rem;
 }
+

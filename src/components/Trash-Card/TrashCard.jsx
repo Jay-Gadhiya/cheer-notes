@@ -5,12 +5,14 @@ import { FaTrashRestoreAlt } from 'react-icons/fa';
 import { useNote } from "../../Contexts/notesActions-context";
 import { addNote } from "../../Utilities-Functions/addNote";
 import { useAuth } from "../../Contexts/authentication-context";
+import { useTheme } from "../../Contexts/themeContext";
 
 
 const TrashCard = ({note}) => {
 
     const { noteState, noteDispatch, setUserNote } = useNote();
     const { authState } = useAuth();
+    const { theme } = useTheme();
 
     const restorFromTrash = (item) => {
         addNote(item, authState, noteDispatch, setUserNote);
@@ -22,7 +24,7 @@ const TrashCard = ({note}) => {
     }
 
     return (
-        <div className={`notes-card ${note.color}`}>
+        <div className={`notes-card ${note.color} ${!note.color && (theme === "dark" ? "white" : "")} `}>
             <div className="notes-content">
                 <div className="title-and-date-box">
                     <h3 className="card-title"> {note.title} </h3>

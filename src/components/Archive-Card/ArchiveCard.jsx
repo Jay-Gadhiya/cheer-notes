@@ -8,15 +8,17 @@ import { useNote } from "../../Contexts/notesActions-context";
 import { deleteNote } from "../../Utilities-Functions/deleteNote";
 import { restoreFromArchive } from "../../Utilities-Functions/restorFromArchive";
 import { deleteFromArchive } from "../../Utilities-Functions/deleteFromArchive";
+import { useTheme } from "../../Contexts/themeContext";
 
 const ArchiveCard = ({ archive }) => {
 
     const { authState } = useAuth();
     const { noteDispatch, userNote, setUserNote } = useNote();
+    const { theme } = useTheme();
 
     return (
         <>
-            <div className={`notes-card ${archive.color}`}>
+            <div className={`notes-card ${archive.color} ${!archive.color && (theme === "dark" ? "white" : "")} `}>
                 <div className="notes-content">
                     <div className="title-and-date-box">
                         <h3 className="card-title"> {archive.title} </h3>

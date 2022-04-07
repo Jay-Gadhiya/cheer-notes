@@ -14,6 +14,7 @@ import { useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { useClickOutside } from "../../Utilities-Functions/useClickOutside";
+import { useTheme } from "../../Contexts/themeContext";
 
 export const HomePage = () => {
     
@@ -21,6 +22,7 @@ export const HomePage = () => {
     const { authState } = useAuth();
     const [colorPalate, setColorPalate] = useState(false);
     const [tagBox, setTagBox] = useState(false);
+    const { theme, setTheme } = useTheme();
     const d = new Date();
     const time = d.getTime();
     let itemTags = [...userNote.tags];
@@ -92,7 +94,7 @@ export const HomePage = () => {
             <div className="notes-main-container">
                 <Aside />
 
-                <main className="notes-users-main-container">
+                <main className={`notes-users-main-container  ${theme === "dark" ? "dark-bg" : ""} `}>
                     <form onSubmit = {(e) => submitHandler(e)} className={`quill-container`}>
 
                         <div className="title-box">
@@ -108,7 +110,7 @@ export const HomePage = () => {
                         </div>
 
                         <ReactQuill 
-                            className={`quill-editor ${userNote.color} `}
+                            className={`quill-editor ${userNote.color} ${!userNote.color && (theme === "dark" ? "white" : "")} `}
                             value={userNote.content}
                             onChange={e => quillHander(e)}
                             placeholder={"Write awsome note"}
@@ -118,7 +120,7 @@ export const HomePage = () => {
                     <div className="tools-container">
                             <div className="tools">
                                 <div ref={colorPalateRef} className="outer-form-container">
-                                    <MdOutlineColorLens  onClick={() => setColorPalate((isOpen) => !isOpen)} className="cursor" />
+                                    <MdOutlineColorLens  onClick={() => setColorPalate((isOpen) => !isOpen)} className= {`cursor ${theme === "dark" ? "color-fff" : ""}`} />
                                     {
                                         colorPalate
                                         &&
@@ -138,7 +140,7 @@ export const HomePage = () => {
                                 </div>
 
                                 <div ref={tagBoxRef} className="tag-container-home">
-                                    <MdOutlineLabel onClick={() => setTagBox((isOpen) => !isOpen)} className="mr-left cursor"/>
+                                    <MdOutlineLabel onClick={() => setTagBox((isOpen) => !isOpen)} className={`mr-left cursor ${theme === "dark" ? "color-fff" : ""}`}/>
 
                                     {
                                         tagBox
