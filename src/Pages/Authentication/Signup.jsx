@@ -78,7 +78,7 @@ const Signup = () => {
             </div>
     
             <div className="auth-btn width-100">
-                <button  className="btn btn-primary">Create New Account</button>
+                <button type="submit"  className="btn btn-primary">Create New Account</button>
             </div>
     
             <div className="auth-btn width-100">
