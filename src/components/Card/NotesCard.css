@@ -204,3 +204,14 @@
 .Low {
     background-color: #45bce4;
 }
+
+.prio {
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #0690be;
+    font-size: .9rem;
+}

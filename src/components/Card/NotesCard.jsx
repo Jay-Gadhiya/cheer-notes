@@ -210,7 +210,7 @@ const NotesCard = ({ note }) => {
                 <RiInboxArchiveLine onClick={() => archiveNotes(note, authState, noteDispatch, setUserNote, setFilterNote)} className="card-tool cursor" />
                 <FiTrash2 onClick={() => deleteNote(note, authState, noteDispatch, setUserNote, setFilterNote)} className="card-tool cursor "/>
                 <MdOutlineModeEdit onClick={() => changeInputs(note)} className="card-tool cursor "/>
-                <select onChange={(e) => priorityAdd(e)} id="Priority" value={note.priority} >
+                <select className="prio" onChange={(e) => priorityAdd(e)} id="Priority" value={note.priority} >
                     <option value="">Priority</option>
                     <option value="High">High</option>
                     <option value="Medium">Medium</option>
