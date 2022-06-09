@@ -6,6 +6,9 @@
 
 .tag-heading {
     text-align: center;
+    background: -webkit-linear-gradient(#0684df, #3bb7ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color: transparent;
 }
 
 .space-devider {
